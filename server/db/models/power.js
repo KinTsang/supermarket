@@ -3,8 +3,8 @@ var Sequelize = require('sequelize');
 
 var db = require('../_db');
 
-module.exports = db.define('product', {
-    title: {
+module.exports = db.define('power', {
+    name: {
         type: Sequelize.STRING
     },
     description: {
