@@ -13,19 +13,34 @@ router.get('/', function(req, res, next){
 		.catch(next);
 });
 
-//Get all powers within a category
+//Get category by id
 router.get('/:categoryId', function(req, res, next){
-	let searchReqs = {}
-	if (req.params.categoryId !== 'all'){
-		searchReqs.where = {categoryId: req.params.categoryId};
-	}
-	Power.findAll(searchReqs)
-    .then(foundPowers => {
-      console.log("Found powers are " + foundPowers);
-      res.send(foundPowers);
+  Category.findById(req.params.categoryId)
+    .then(foundCategory => res.send(foundCategory))
+    .catch(next);
+});
+
+//Get all powers
+router.get('/all', function(req, res, next){
+    Power.findAll()
+      .then(foundPowers => res.send(foundPowers))
+      .catch(next);
+});
+
+//Get all powers within a category
+router.get('/:categoryId/items', function(req, res, next){
+  Category.findById(req.params.categoryId)
+    .then(foundCategory => {
+      foundCategory.getPowers()
+        .then(foundPowers => res.send(foundPowers))
     })
     .catch(next);
 });
+
+
+///////////////////////////////
+//////ADMIN ROUTES BELOW///////
+///////////////////////////////
 
 //Create a new category
 router.post('/', function(req, res, next){
@@ -41,7 +56,7 @@ router.put('/:categoryId', function(req, res, next){
       categoryId: req.params.categoryId
     }
   })
-  .then(foundCategory => req.update(req.body)
+  .then(foundCategory => foundCategory.update(req.body)
         .then(updatedCategory => res.send(updatedCategory)))
   .catch(next);
 });

@@ -11,15 +11,20 @@ app.config(function ($stateProvider){
 app.controller('CategoryCtrl', function ($scope, CategoryFactory, $log, $stateParams){
 
   CategoryFactory.fetchAll()
-  .then(function (foundCategories) {
-    $scope.categories = foundCategories;
+    .then(function (foundCategories) {
+      $scope.categories = foundCategories;
   })
   .catch($log.error);
 
-  CategoryFactory.fetchById($stateParams.id)
-  .then(function (foundPowers) {
-    $scope.powers = foundPowers;
-    console.log($scope.powers);
+  CategoryFactory.fetchItemsById($stateParams.categoryId)
+    .then(function (foundPowers) {
+      $scope.powers = foundPowers;
   })
   .catch($log.error);
+
+  CategoryFactory.fetchCatById($stateParams.categoryId)
+    .then(function (foundCategory) {
+      $scope.category = foundCategory;
+    })
+    .catch($log.error);
 });

@@ -5,22 +5,27 @@ app.factory('CategoryFactory', function ($http) {
 
   CategoryFactory.fetchAll = function () {
     return $http.get('/api/categories')
-    .then(formatData);
+      .then(formatData);
   }
 
-  CategoryFactory.fetchById = function (id) {
+  CategoryFactory.fetchCatById = function (id) {
     return $http.get('/api/categories/' + id)
-    .then(formatData);
+      .then(formatData);
+  }
+
+  CategoryFactory.fetchItemsById = function (id) {
+    return $http.get('/api/categories/' + id + '/items')
+      .then(formatData);
    }
 
    CategoryFactory.createCategory = function (name) {
      return $http.post('/api/categories', {name: name})
-     .then(formatData);
+      .then(formatData);
    }
 
    CategoryFactory.editCategory = function (id, name) {
      return $http.put('/api/categories/' + id, {name: name})
-     .then(formatData);
+      .then(formatData);
    }
 
   return CategoryFactory;
