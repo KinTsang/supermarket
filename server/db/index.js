@@ -1,7 +1,6 @@
 'use strict';
 var Sequelize = require('sequelize');
 var db = require('./_db');
-module.exports = db;
 
 // eslint-disable-next-line no-unused-vars
 var Category = require('./models/category');
@@ -31,3 +30,14 @@ Power.belongsToMany(Order, { through: PowerOrder });
 Order.belongsTo(User);
 Review.belongsTo(Power);
 Review.belongsTo(User);
+
+module.exports = {
+    db: db,
+    Category: Category,
+    Order: Order,
+    Power: Power,
+    PowerCategory: PowerCategory,
+    PowerOrder: PowerOrder,
+    Review: Review,
+    User: User
+ }
