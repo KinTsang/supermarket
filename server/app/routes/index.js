@@ -5,7 +5,7 @@ module.exports = router;
 router.use('/members', require('./members'));
 
 //route to query powers
-router.use('/api/powers', require('./powers'));
+router.use('/powers', require('./powers'));
 
 // Make sure this is after all of
 // the registered routes!

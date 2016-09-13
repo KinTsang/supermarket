@@ -1,5 +1,3 @@
-<p>{{powerInfo}}</p>
-
 <div class="container-fluid">
     <div class="content-wrapper">
     <div class="item-container">
@@ -8,24 +6,18 @@
           <div class="product col-md-3 service-image-left">
 
             <center>
-              <img id="item-display" ui-src="{{picUrl}}" src=" https://placebear.com/200/300" alt="">[Placeholder for Picture]</img>
+              <img id="item-display" src="{{powerInfo.picUrl}}" alt="image for product"></img>
             </center>
           </div>
 
         <div class="col-md-7">
-          <div><h2>{{name}}[Placeholder for product name]</h2></div>
+          <div><h2>{{powerInfo.name}}</h2></div>
           <br>
-          <div class="product-desc">{{description}}Bacon ipsum dolor amet porchetta ground round hamburger laborum prosciutto eiusmod strip steak pork lorem. Incididunt tail dolor biltong do jowl sed sint. Meatball culpa pork loin eiusmod, leberkas dolor adipisicing et strip steak sirloin short ribs consectetur jerky. Ball tip eiusmod capicola, pork loin pastrami cupim pork. Flank et exercitation ball tip. Pork chop cupim ullamco spare ribs beef ea id.
-
-Picanha pork beef et cupim ut chuck dolore spare ribs pig deserunt nisi bresaola in. Shankle est pork chop t-bone meatball chicken fatback pariatur. Kevin deserunt swine eu beef tempor venison. Reprehenderit shankle frankfurter tongue, kevin duis quis ullamco elit adipisicing venison. Meatball shoulder nisi, nulla consequat rump adipisicing. Dolore corned beef pork chop porchetta, ad turducken salami cillum andouille esse.
-
-Dolore porchetta est pork chop chicken swine, consequat voluptate aliqua nulla commodo jowl. Turkey tri-tip ut ullamco id officia jowl. Fugiat t-bone ut shankle aliquip jowl irure. Adipisicing frankfurter quis ground round dolore. Ex sint pork shankle.
-
-Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</div>
+          <div class="product-desc">{{powerInfo.description}}</div>
             <br>
 
           <ul class="list-inline list-unstyled">
-          <li><span><i class="glyphicon glyphicon-calendar"></i>{{elapseTime}}[product stocked: MM/dd/yyyy]</span></li>
+          <li><span><i class="glyphicon glyphicon-calendar"></i>{{powerInfo.createdAt | date:"MM/dd/yyyy"}}</span></li>
           <li>|</li>
           <span><i class="glyphicon glyphicon-comment"></i> <a ui-sref="#">2 reviews</a></span>
           <li>|</li>
@@ -36,13 +28,13 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star-empty"></span>
           </li>
-          <li>|</li>
+<!--           <li>|</li>
           <i class="icon-tags"></i> Tags : <a href="#"><span class="label label-info">Snipp</span></a>
           <li>
-          </ul>
-
+          </ul> -->
           <br>
-          <div class="product-price">{{price}}[placeholder for price]</div>
+          <br>
+          <div class="product-price">{{powerInfo.price}}</div>
           <br>
           <div class="product-stock">In Stock</div>
           <hr>
@@ -52,11 +44,11 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
               [This button should only work if in stock]
             </button>
           </div>
-<!--           <div class="btn-group wishlist">
+          <div class="btn-group wishlist">
             <button type="button" class="btn btn-danger">
               Add to wishlist
             </button>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -101,7 +93,7 @@ Does your lorem ipsum text long for something a little meatier? Give our generat
 
           </div>
         </div>
-        <h -->r>
+        <hr> -->
       </div>
     </div>
   </div>
