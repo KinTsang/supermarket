@@ -3,7 +3,7 @@ app.directive('catbar', function() {
     restrict: 'E',
     templateUrl: 'js/common/directives/catbar/catbar.html',
     link: function (scope) {
-      scope.categories = ['cat1', 'cat2', 'cat3']
+      scope.categories = ['Category 1', 'Category 2', 'Category 3']
     }
   }
 })
