@@ -5,7 +5,7 @@ var db = require('../_db');
 
 module.exports = db.define('category', {
     name: {
-        type: Sequelize.FLOAT
+        type: Sequelize.STRING
     }
 }, {
     instanceMethods: {
