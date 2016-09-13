@@ -18,7 +18,13 @@ name in the environment files.
 */
 
 var chalk = require('chalk');
-var db = require('./server/db');
+var db = require('./server/db').db;
+var Category = db.model('category');
+var Order = db.model('order');
+var Power = db.model('power');
+var PowerCategory = db.model('power_category');
+var PowerOrder = db.model('power_order');
+var Review = db.model('review');
 var User = db.model('user');
 var Promise = require('sequelize').Promise;
 
@@ -43,9 +49,78 @@ var seedUsers = function () {
 
 };
 
+var seedPowers = function () {
+    var powers = [
+        {
+            name: 'Super Speed',
+            description: 'Go fast.',
+            price: 499.99
+        },
+        {
+            name: 'Sweaty Hands',
+            description: 'Feel the moisture.',
+            price: 1.99
+        },
+        {
+            name: 'Telepathy',
+            description: 'Read minds.',
+            price: 999.99
+        }
+    ];
+    var creatingPowers = powers.map(function(powerObj) {
+        return Power.create(powerObj);
+    });
+    return Promise.all(creatingPowers);
+};
+
+var seedCategories = function () {
+    var categories = [
+        {
+            name: 'Physical'
+        },
+        {
+            name: 'Mental'
+        }
+    ];
+    var creatingCategories = categories.map(function(cateObj) {
+        return Category.create(cateObj);
+    });
+    return Promise.all(creatingCategories);
+};
+
+var seedPowerCategories = function () {
+    var powercategories = [
+        {
+            powerId: 1,
+            categoryId: 1
+        },
+        {
+            powerId: 2,
+            categoryId: 1
+        },
+        {
+            powerId: 3,
+            categoryId: 2
+        }
+    ];
+    var creatingPowerCategories = powercategories.map(function(pcObj) {
+        return PowerCategory.create(pcObj);
+    });
+    return Promise.all(creatingPowerCategories);
+};
+
 db.sync({ force: true })
     .then(function () {
         return seedUsers();
+    })
+    .then(function () {
+        return seedPowers();
+    })
+    .then(function () {
+        return seedCategories();
+    })
+    .then(function () {
+        return seedPowerCategories();
     })
     .then(function () {
         console.log(chalk.green('Seed successful!'));
