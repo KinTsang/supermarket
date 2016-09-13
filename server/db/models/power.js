@@ -8,13 +8,16 @@ module.exports = db.define('power', {
         type: Sequelize.STRING
     },
     description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     },
     price: {
         type: Sequelize.FLOAT
     },
     quantity: {
         type: Sequelize.INTEGER
+    },
+    picUrl: {
+        type: Sequelize.STRING
     }
 }, {
     instanceMethods: {
