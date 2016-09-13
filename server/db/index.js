@@ -1,4 +1,5 @@
 'use strict';
+var Sequelize = require('sequelize');
 var db = require('./_db');
 module.exports = db;
 
@@ -14,3 +15,19 @@ var User = require('./models/user');
 
 // TODO: add product belongsToMany categories
 // TODO: add order belongs to either user OR guest session
+
+var PowerCategory = db.define('power_category');
+var PowerOrder = db.define('power_order', {
+    quantity: {
+        type: Sequelize.INTEGER
+    },
+    priceAtPurchase: {
+        type: Sequelize.FLOAT
+    }
+});
+
+Power.belongsToMany(Category, { through: PowerCategory });
+Power.belongsToMany(Order, { through: PowerOrder });
+Order.belongsTo(User);
+Review.belongsTo(Power);
+Review.belongsTo(User);
