@@ -19,10 +19,13 @@
     <catbar></catbar>
 
     <div class="container-fluid">
-        <div class=row>
+        <div class="col-md-2">
             <filter-bar></filter-bar>
         </div>
+        <div class="col-md-10">
+            <div id="main" ui-view></div>
+        </div>
     </div>
-    <div id="main" ui-view></div>
+
 </body>
 </html>

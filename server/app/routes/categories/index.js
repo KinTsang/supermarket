@@ -20,8 +20,11 @@ router.get('/:categoryId', function(req, res, next){
 		searchReqs.where = {categoryId: req.params.categoryId};
 	}
 	Power.findAll(searchReqs)
-		.then(foundCategories => res.send(foundCategories))
-		.catch(next)
+    .then(foundPowers => {
+      console.log("Found powers are " + foundPowers);
+      res.send(foundPowers);
+    })
+    .catch(next);
 });
 
 //Create a new category
@@ -58,3 +61,5 @@ router.delete('/:categoryName', function(req, res, next){
         }))
   .catch(next);
 });
+
+module.exports = router;
