@@ -109,6 +109,27 @@ var seedPowerCategories = function () {
     return Promise.all(creatingPowerCategories);
 };
 
+var seedReviews = function () {
+    var reviews = [
+        {
+            description: 'Amazing power. 10/10.',
+            rating: 5,
+            powerId: 1,
+            userId: 1
+        },
+        {
+            description: 'This power is useful, but I get chaffed nipples while running now :(',
+            rating: 3,
+            powerId: 1,
+            userId: 2
+        }
+    ];
+    var creatingReviews = reviews.map(function(rObj) {
+        return Review.create(rObj);
+    });
+    return Promise.all(creatingReviews);
+};
+
 db.sync({ force: true })
     .then(function () {
         return seedUsers();
@@ -121,6 +142,9 @@ db.sync({ force: true })
     })
     .then(function () {
         return seedPowerCategories();
+    })
+    .then(function () {
+        return seedReviews();
     })
     .then(function () {
         console.log(chalk.green('Seed successful!'));
