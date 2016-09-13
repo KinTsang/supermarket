@@ -3,7 +3,7 @@ var db = require('./_db');
 module.exports = db;
 
 // eslint-disable-next-line no-unused-vars
-var Product = require('./models/product');
+// var Product = require('./models/product');
 var User = require('./models/user');
 var Order = require('./models/order');
 var Review = require('./models/review');
