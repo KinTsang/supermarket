@@ -62,6 +62,16 @@ gulp.task('testServerJS', function () {
 	}).pipe(mocha({ reporter: 'spec' }));
 });
 
+gulp.task('testRan', function () {
+    require('babel-register');
+    //testing environment variable
+    process.env.NODE_ENV = 'testing';
+    return gulp.src('./tests/server/models/category-test.js', {
+        read: false
+    }).pipe(mocha({ reporter: 'spec' }));
+});
+
+
 gulp.task('testServerJSWithCoverage', function (done) {
     //testing environment variable
     process.env.NODE_ENV = 'testing';
