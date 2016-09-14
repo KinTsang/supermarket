@@ -9,13 +9,24 @@ app.factory('CategoryFactory', function ($http) {
   }
 
   CategoryFactory.fetchCatById = function (id) {
-    return $http.get('/api/categories/' + id)
-      .then(formatData);
+    if (id === 'all'){
+      return {name: 'All'};
+    } else {
+      return $http.get('/api/categories/' + id)
+        .then(formatData);
+    }
   }
 
   CategoryFactory.fetchItemsById = function (id) {
-    return $http.get('/api/categories/' + id + '/items')
-      .then(formatData);
+
+    if (id === 'all') {
+      return $http.get('/api/categories/all')
+        .then(formatData);
+    } else {
+      return $http.get('/api/categories/' + id + '/items')
+        .then(formatData);
+    }
+
    }
 
    CategoryFactory.createCategory = function (name) {

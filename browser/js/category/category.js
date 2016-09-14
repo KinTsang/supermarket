@@ -1,6 +1,7 @@
 'use strict'
 
 app.config(function ($stateProvider){
+
   $stateProvider.state('category', {
     url: '/category/:categoryId',
     templateUrl: 'js/category/category.html',
@@ -10,12 +11,6 @@ app.config(function ($stateProvider){
  //es6 function
 app.controller('CategoryCtrl', function ($scope, CategoryFactory, $log, $stateParams){
 
-  CategoryFactory.fetchAll()
-    .then(function (foundCategories) {
-      $scope.categories = foundCategories;
-  })
-  .catch($log.error);
-
   CategoryFactory.fetchItemsById($stateParams.categoryId)
     .then(function (foundPowers) {
       $scope.powers = foundPowers;
@@ -24,7 +19,16 @@ app.controller('CategoryCtrl', function ($scope, CategoryFactory, $log, $statePa
 
   CategoryFactory.fetchCatById($stateParams.categoryId)
     .then(function (foundCategory) {
+      console.log(foundCategory);
       $scope.category = foundCategory;
     })
     .catch($log.error);
 });
+
+app.controller('CatBarCtrl', function($scope, CategoryFactory, $log, $stateParams){
+  CategoryFactory.fetchAll()
+    .then(function (foundCategories) {
+      $scope.categories = foundCategories;
+  })
+  .catch($log.error);
+})
