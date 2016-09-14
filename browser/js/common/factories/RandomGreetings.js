@@ -28,13 +28,3 @@ app.factory('RandomGreetings', function () {
 
 });
 
-app.factory('updatePower', function($http, $log){
-
-    var object = {};
-
-    object.updatePosting = function(powerInfo){
-        return $http.put('api/powers/' + powerInfo.id, powerInfo)
-    }
-
-    return object;
-})
