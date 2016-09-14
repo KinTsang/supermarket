@@ -49,6 +49,8 @@ router.get('/:categoryId/items', function(req, res, next){
 
 //Create a new category
 router.post('/', function(req, res, next){
+  console.log('CREATECAT')
+  console.log(req.body)
   Category.create(req.body)
   .then(createdCategory => res.send(createdCategory))
   .catch(next);
@@ -56,7 +58,6 @@ router.post('/', function(req, res, next){
 
 //Modify a category
 router.put('/:categoryId', function(req, res, next){
-  console.log('REQBODY', req.body)
   Category.findById(req.params.categoryId)
   .then(foundCategory => foundCategory.update(req.body)
         .then(updatedCategory => res.send(updatedCategory)))

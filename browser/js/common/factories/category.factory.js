@@ -30,6 +30,7 @@ app.factory('CategoryFactory', function ($http) {
    }
 
    CategoryFactory.createCategory = function (name) {
+    console.log('name')
      return $http.post('/api/categories', {name: name})
       .then(formatData);
    }

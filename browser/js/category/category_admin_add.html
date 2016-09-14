@@ -1,0 +1,9 @@
+<div class="form-group">
+<form style="display:inline" name="addCategoryForm" novalidate>
+  <label>Name:</label>
+  <input name="categoryName" ng-model="category.name" type="text" class="form-control" required ng-minlength="5">
+</div>
+
+
+  <button type="submit" class="btn btn-primary" ng-click="addCategory(category.name)" ng-disabled="addCategoryForm.$invalid">Insert Product</button>
+</form>
