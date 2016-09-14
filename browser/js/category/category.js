@@ -1,34 +1,56 @@
 'use strict'
 
-app.config(function ($stateProvider){
+app.config(function($stateProvider) {
 
-  $stateProvider.state('category', {
-    url: '/category/:categoryId',
-    templateUrl: 'js/category/category.html',
-    controller: 'CategoryCtrl',
-  });
-});
- //es6 function
-app.controller('CategoryCtrl', function ($scope, CategoryFactory, $log, $stateParams){
+    // State for ALL powers
+    $stateProvider.state('allCategory', {
+        url: '/category/all',
+        templateUrl: 'js/category/category.html',
+        controller: 'AllCatCtrl',
+    });
+    // State for powers list in a specified category
+    $stateProvider.state('category', {
+        url: '/category/:categoryId',
+        templateUrl: 'js/category/category.html',
+        controller: 'CategoryCtrl',
+    });
 
-  CategoryFactory.fetchItemsById($stateParams.categoryId)
-    .then(function (foundPowers) {
-      $scope.powers = foundPowers;
-  })
-  .catch($log.error);
-
-  CategoryFactory.fetchCatById($stateParams.categoryId)
-    .then(function (foundCategory) {
-      console.log(foundCategory);
-      $scope.category = foundCategory;
-    })
-    .catch($log.error);
 });
 
-app.controller('CatBarCtrl', function($scope, CategoryFactory, $log, $stateParams){
-  CategoryFactory.fetchAll()
-    .then(function (foundCategories) {
-      $scope.categories = foundCategories;
-  })
-  .catch($log.error);
+
+// Controller for powers list in a specified category
+app.controller('CategoryCtrl', function($scope, CategoryFactory, $log, $stateParams) {
+
+    CategoryFactory.fetchPowersById($stateParams.categoryId)
+        .then(function(foundPowers) {
+            $scope.powers = foundPowers;
+        })
+        .catch($log.error);
+
+    CategoryFactory.fetchCatById($stateParams.categoryId)
+        .then(function(foundCategory) {
+            $scope.category = foundCategory;
+        })
+        .catch($log.error);
+});
+
+
+// Controller for list of ALL powers
+app.controller('AllCatCtrl', function($scope, CategoryFactory, $log, $stateParams) {
+
+    CategoryFactory.fetchAllPowers()
+        .then(function(foundPowers) {
+            $scope.powers = foundPowers;
+        })
+        .catch($log.error);
+});
+
+
+// Controller for category-bar below nav-bar
+app.controller('CatBarCtrl', function($scope, CategoryFactory, $log, $stateParams) {
+    CategoryFactory.fetchAll()
+        .then(function(foundCategories) {
+            $scope.categories = foundCategories;
+        })
+        .catch($log.error);
 })
