@@ -96,6 +96,8 @@ app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, crea
 
   $scope.updateInfo = powerInfo;
 
+  $scope.created = false;
+
   $scope.updatePosting = function(updateInfo){
     console.log('invoking updatePosting function', updateInfo)
     updatePowerFactory.updatePosting(updateInfo)
@@ -111,6 +113,8 @@ app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, crea
     .then(function(createdPower){
       console.log('The created power is: ', createdPower)
       $scope.newPower = {};
+      $scope.created = true;
+
     })
   }
 })

@@ -1,4 +1,7 @@
 <div container="container">
+    <button class="btn btn-warning" ui-sref="createPower">Add new power</button>
+    <br>
+    <hr>
   <ul class="non-styled list-group">
     <li ng-repeat="power in powerInfo" class="list-group-item"> {{power.name}}
     <button class="btn btn-primary pull-right" ui-sref="editPower({powerId: power.id})">edit</button>
