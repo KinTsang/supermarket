@@ -27,3 +27,4 @@ app.factory('RandomGreetings', function () {
     };
 
 });
+
