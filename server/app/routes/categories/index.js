@@ -56,11 +56,8 @@ router.post('/', function(req, res, next){
 
 //Modify a category
 router.put('/:categoryId', function(req, res, next){
-  Category.findOne({
-    where: {
-      categoryId: req.params.categoryId
-    }
-  })
+  console.log('REQBODY', req.body)
+  Category.findById(req.params.categoryId)
   .then(foundCategory => foundCategory.update(req.body)
         .then(updatedCategory => res.send(updatedCategory)))
   .catch(next);
@@ -69,16 +66,12 @@ router.put('/:categoryId', function(req, res, next){
 //Delete a category
 
 //TLEE QUESTION: how to use es6 with an empty parameter like the last .then below
-router.delete('/:categoryName', function(req, res, next){
-  Category.findOne({
-    where: {
-      categoryId: req.params.categoryId
-    }
+router.delete('/:categoryId', function(req, res, next){
+  Category.findById(req.params.categoryId)
+  .then(foundCategory => foundCategory.destroy())
+  .then(function(){
+    res.sendStatus(204);
   })
-  .then(foundBook => foundBook.destroy()
-        .then(function(){
-          res.sendStatus(204);
-        }))
   .catch(next);
 });
 
