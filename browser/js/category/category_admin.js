@@ -8,6 +8,12 @@ app.config(function ($stateProvider){
     url: '/admin/category/edit/:categoryId',
     templateUrl: 'js/category/category_admin_edit.html',
     controller: 'AdminCategoryCtrl',
+    // resolve: {
+    //   currentCategory: function(CategoryFactory, $stateParams){
+    //     CategoryFactory.fetchById($stateParams.categoryId)
+
+    //   }
+    // }
   })
   .state('addcategory', {
     url: '/admin/category/add',
@@ -20,9 +26,15 @@ app.config(function ($stateProvider){
 app.controller('AdminCategoryCtrl', function ($scope, CategoryFactory, $log, $stateParams, $state) {
 
   // $scope.category = category;
+  CategoryFactory.fetchAll()
+  .then(function (foundCategories){
+    console.log(foundCategories);
+    $scope.categories = foundCategories;
+  })
 
-  $scope.editCategory = function (id, category){
-    CategoryFactory.editCategory(id, category)
+  $scope.editCategory = function (categoryId, category){
+    console.log('id', categoryId);
+    CategoryFactory.editCategory(categoryId, category)
     .then(category => $state.go('categoryadmin'));
   };
 

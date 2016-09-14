@@ -3,7 +3,7 @@
   <ul class="list-group">
      <li class="list-group-item" ng-repeat="category in categories">
       {{category.name}}
-      <a class="btn btn-secondary pull-right" ui-sref="editcategory({categoryId: category.id})"> Edit </a>
+      <a class="btn btn-secondary pull-right" ui-sref="editcategory({categoryId: category})"> Edit </a>
       <button ng-click="deleteCategory(category.id)" class="btn btn-danger pull-right">Delete</button>
     </li>
   </ul>
