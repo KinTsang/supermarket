@@ -26,10 +26,19 @@ var PowerOrder = db.define('power_order', {
 });
 
 Power.belongsToMany(Category, { through: PowerCategory });
+Category.belongsToMany(Power, { through: PowerCategory });
+
 Power.belongsToMany(Order, { through: PowerOrder });
+Order.belongsToMany(Power, { through: PowerOrder });
+
 Order.belongsTo(User);
+User.hasMany(Order);
+
 Review.belongsTo(Power);
+Power.hasMany(Review);
+
 Review.belongsTo(User);
+User.hasMany(Review);
 
 module.exports = {
     db: db,

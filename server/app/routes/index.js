@@ -3,6 +3,7 @@ var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 
 router.use('/members', require('./members'));
+router.use('/categories', require('./categories'));
 
 //route to query powers
 router.use('/powers', require('./powers'));
