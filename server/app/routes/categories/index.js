@@ -14,26 +14,22 @@ router.get('/', function(req, res, next){
 });
 
 //Get all powers
-router.get('/all/items', function(req, res){
+router.get('/all/powers', function(req, res, next){
     Power.findAll()
       .then(foundPowers => res.send(foundPowers))
-      .catch();
+      .catch(next);
 });
 
 //Get category by id
 router.get('/:categoryId', function(req, res, next){
-  // var searchQuery = {};
-  // console.log()
-  // if (typeof req.params.categoryId === 'number')
   Category.findById(req.params.categoryId)
     .then(foundCategory => res.send(foundCategory))
     .catch(next);
 });
 
 
-
 //Get all powers within a category
-router.get('/:categoryId/items', function(req, res, next){
+router.get('/:categoryId/powers', function(req, res, next){
   Category.findById(req.params.categoryId)
     .then(foundCategory => {
       foundCategory.getPowers()
@@ -46,6 +42,7 @@ router.get('/:categoryId/items', function(req, res, next){
 ///////////////////////////////
 //////ADMIN ROUTES BELOW///////
 ///////////////////////////////
+
 
 //Create a new category
 router.post('/', function(req, res, next){
