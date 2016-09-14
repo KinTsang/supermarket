@@ -4,14 +4,21 @@
     <br>
     <br>
     Description
-    <textarea type="text" name="description" ng-mode="newPower.description" row="8" placeholder="Description"></textarea>
+    <textarea type="text" name="description" ng-model="newPower.description" row="8" placeholder="Description"></textarea>
     <br>
     <br>
     Category
-    <input type="text" name='categoryId' ng-model="newPower.categoryId" placeholder="CategoryId">
-    <small> The categoryId need to be changed so that it allows the selection of category via ng-select </small>
-    <hr>
+    <select type="text" name='categoryId' ng-model="newPower.categoryId" ng-options="category.id as category.name for category in categoryInfo"></select>
     <br>
+    <br>
+    Price
+    <input type="number" name="price" ng-model="newPower.price" placeholder="Price">
+    <br>
+
+    <br>
+    Quantity
+    <input type="number" name="quantity" ng-model="newPower.quantity" placeholder="quantity">
+    <hr>
     Image Url
     <input type="text" name="picUrl" ng-model="newPower.picUrl" placeholder="Image Url">
     <div class="form-group">
