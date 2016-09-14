@@ -1,4 +1,4 @@
-<h2>CATEGORY PAGE FOR: {{category.name}}</h2>
+<h2 ng-show="category">CATEGORY PAGE FOR: {{category.name}}</h2>
 <div>
   <div ng-repeat='power in powers' class="col-md-4" style="background-color: #DDD; margin: 10px; text-align: center; height: 200px">
   	<img ng-src="{{power.picUrl}}" class="img-responsive">

@@ -5,8 +5,11 @@
         <ul class="nav navbar-nav">
 
             <li>[TODO: Add CSS to decrease height]</li>
-            <li ng-repeat="category in categories" ng-show="true">
-                <a ui-sref-active="active" ui-sref="category({categoryId: category.id})">{{category.name}}</a>
+            <li>
+                <a ui-sref-active="active" ui-sref="allCategory">All Powers</a>
+            </li>
+            <li ng-repeat="category in categories">
+                <a ui-sref-active="active" ui-sref="category({categoryId: category.id})">{{category.name}} Powers</a>
             </li>
 
         </ul>
