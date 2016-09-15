@@ -1,0 +1,9 @@
+<div class="form-group">
+<form style="display:inline" name="editCategoryForm" novalidate>
+  <label> Category Name:</label>
+  <input name="name" ng-model="category.name" type="text" class="form-control" required ng-minlength="5" value="{{ category.name }}">
+</div>
+
+
+  <button type="submit" class="btn btn-primary" ng-click="editCategory(category.id, category)" ng-disabled="editCategoryForm.$invalid">Update Category</button>
+</form>

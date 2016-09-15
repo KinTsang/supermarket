@@ -23,15 +23,22 @@ app.factory('CategoryFactory', function($http) {
             .then(formatData);
     }
 
-    CategoryFactory.createCategory = function(name) {
-        return $http.post('/api/categories', { name: name })
-            .then(formatData);
-    }
+   CategoryFactory.createCategory = function (name) {
+    console.log('name')
+     return $http.post('/api/categories', {name: name})
+      .then(formatData);
+   }
+
 
     CategoryFactory.editCategory = function(id, name) {
         return $http.put('/api/categories/' + id, { name: name })
             .then(formatData);
     }
 
-    return CategoryFactory;
+
+   CategoryFactory.deleteCategory = function (id) {
+    return $http.delete('/api/categories/' + id)
+   }
+
+  return CategoryFactory;
 })
