@@ -1,0 +1,14 @@
+Reading of cart.
+    1. First entry of site. (Load previous items if any).
+    2. Add to cart.
+    3. Cart page to view what's in cart. (list, delete)
+    4. Every request gets N items from cart in icon.
+
+Writing of cart. Add 3 categories into Order model.
+    - Free to name these whatever you want.
+    - Use either SessionId, or UserId to associated an order with a client.
+    - Status: Either in cart, or processed.
+    - SessionId: Gotten from req.session.
+    - UserId: Gotten from req.session. These are both applied by session middleware.
+
+Maybe under /browser/js/common/factories/CartFactory.js
