@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="content-wrapper">
+        <div class="item-container">
+            <form class="container form-group" name="updatePower" ng-submit="updatePosting(updateInfo)">
+                <div class="col-md-12">
+                        <div>
+                            <h2>Current power Name: {{powerInfo.name}} <input type="text" class="form-control" name="name" placeholder="Power name" ng-model="updateInfo.name"></h2>
+                              Current power Url: {{powerInfo.picUrl}} <input type="text" class="form-control" name="picUrl" placeholder="Picture Url" ng-model="updateInfo.picUrl">
+                                <br>
+                                  Current power Description: {{powerInfo.description}} <input type="text" class="form-control" name="desc" placeholder="Power description" ng-model="updateInfo.description">
+                                <br>
+                                <ul class="list-inline list-unstyled">
+                                    <br>
+                                    <br>
+                                      Current power Price: {{powerInfo.price}} <input type="text" class="form-control" name="price" placeholder="Power price" ng-model="updateInfo.price">
+                                    <br>
+                                      Current power Quantity: {{powerInfo.quantity}} <input type="text" class="form-control" name="quantity" placeholder="Power quantity" ng-model="updateInfo.quantity">
+                                    <hr>
+                                  </ul>
+                                <button class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+        </div>

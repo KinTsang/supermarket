@@ -1,0 +1,30 @@
+<form class="form-group" name="newPowerForm" ng-submit="createNewPower(newPower)" novalidate>
+    Name
+    <input type="text" ng-model="newPower.name" name="name" placeholder="Power Name">
+    <br>
+    <br>
+    Description
+    <textarea type="text" name="description" ng-model="newPower.description" row="8" placeholder="Description"></textarea>
+    <br>
+    <br>
+    Category
+    <select type="text" name='categoryId' ng-model="newPower.categoryId" ng-options="category.id as category.name for category in categoryInfo"></select>
+    <br>
+    <br>
+    Price
+    <input type="number" name="price" ng-model="newPower.price" placeholder="Price">
+    <br>
+
+    <br>
+    Quantity
+    <input type="number" name="quantity" ng-model="newPower.quantity" placeholder="quantity">
+    <hr>
+    Image Url
+    <input type="text" name="picUrl" ng-model="newPower.picUrl" placeholder="Image Url">
+    <div class="form-group">
+        <label for="exampleInputFile">Image File [This is currently a placeholder]</label>
+        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    </div>
+    <button class="btn btn-primary">Submit</button>
+</form>
