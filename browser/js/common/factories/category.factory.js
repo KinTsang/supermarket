@@ -35,6 +35,11 @@ app.factory('CategoryFactory', function($http) {
             .then(formatData);
     }
 
+    CategoryFactory.editStatus = function(id, boolean) {
+      console.log(id, boolean)
+        return $http.put('/api/categories/' + id, { active: boolean })
+            .then(formatData);
+    }
 
    CategoryFactory.deleteCategory = function (id) {
     return $http.delete('/api/categories/' + id)
