@@ -1,9 +1,26 @@
-<a class="btn btn-primary" role="button" ui-sref="addcategory">Add Category</a>
+<a class="btn btn-primary" role="button" ng-click="showForm()">Add Category</a>
 
   <ul class="list-group">
-     <li class="list-group-item" ng-repeat="category in categories">
+    <li class="list-group-item"editable-text="category.name" onaftersave="addCategory($data)" ng-show="categoryForm">
+    {{ category.name || 'Insert Category Here' }}
+  </li>
+     <li class="list-group-item" ng-repeat="category in categories | filter: {active: true} | orderBy: ['name']" editable-text="category.name" onaftersave="editCategory(category.id, $data)">
       {{category.name}}
-      <a class="btn btn-secondary pull-right" ui-sref="editcategory({categoryId: category})"> Edit </a>
+      <button type="button" ng-click="isActive(category.id, false)" class="btn btn-info pull-right">Inactive</button>
       <button ng-click="deleteCategory(category.id)" class="btn btn-danger pull-right">Delete</button>
     </li>
   </ul>
+
+  <ul class="list-group">
+     <li class="list-group-item" ng-repeat="category in categories | filter: {active: false} | orderBy: ['name']" editable-text="category.name" onaftersave="editCategory(category.id, $data)">
+      {{category.name}}
+      <button type="button" ng-click="isActive(category.id, true)" class="btn btn-info pull-right">Active</button>
+      <button ng-click="deleteCategory(category.id)" class="btn btn-danger pull-right">Delete</button>
+    </li>
+  </ul>
+
+<!-- Issues:
+
+cannot add more than one at a time
+buttons should show once edited
+ -->
