@@ -1,17 +1,1 @@
 
-  <nav class="navbar well" ng-if="true">
-    <div class="container-fluid">
-
-        <ul class="nav navbar-nav">
-
-            <li>[TODO: Add CSS to decrease height]</li>
-            <li>
-                <a ui-sref-active="active" ui-sref="allCategory">All Powers</a>
-            </li>
-            <li ng-repeat="category in categories">
-                <a ui-sref-active="active" ui-sref="category({categoryId: category.id})">{{category.name}} Powers</a>
-            </li>
-
-        </ul>
-    </div>
-</nav>

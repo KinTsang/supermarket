@@ -44,13 +44,3 @@ app.controller('AllCatCtrl', function($scope, CategoryFactory, $log, $stateParam
         })
         .catch($log.error);
 });
-
-
-// Controller for category-bar below nav-bar
-app.controller('CatBarCtrl', function($scope, CategoryFactory, $log, $stateParams) {
-    CategoryFactory.fetchAll()
-        .then(function(foundCategories) {
-            $scope.categories = foundCategories;
-        })
-        .catch($log.error);
-})

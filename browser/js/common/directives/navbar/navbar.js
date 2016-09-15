@@ -1,16 +1,23 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+// app.controller('NavbarCtrl', function($scope, categories) {
+//     console.log(categories);
+//     $scope.categories = categories;
+// });
+
+app.directive('navbar', function ($rootScope, CategoryFactory, AuthService, AUTH_EVENTS, $state) {
 
     return {
         restrict: 'E',
         scope: {},
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
-            scope.items = [
-                { label: 'Home', state: 'home' },
-                { label: 'About', state: 'about' },
-                { label: 'Documentation', state: 'docs' },
-                { label: 'Members Only', state: 'membersOnly', auth: true }
-            ];
+            CategoryFactory.fetchAll()
+            .then((categories) => {
+                scope.categories = categories;
+            });
+
+            // scope.items = [
+            //     { label: 'Members Only', state: 'membersOnly', auth: true }
+            // ];
 
             scope.user = null;
 
