@@ -3,13 +3,13 @@
 app.config(function($stateProvider) {
 
     // State for ALL powers
-    $stateProvider.state('allCategory', {
+    $stateProvider.state('allCategory', { //consider this being an allPowers page for how you are using it now -- KHJC
         url: '/category/all',
         templateUrl: 'js/category/category.html',
-        controller: 'AllCatCtrl',
+        controller: 'AllCatCtrl', 
     });
     // State for powers list in a specified category
-    $stateProvider.state('category', {
+    $stateProvider.state('category', { 
         url: '/category/:categoryId',
         templateUrl: 'js/category/category.html',
         controller: 'CategoryCtrl',
@@ -21,9 +21,12 @@ app.config(function($stateProvider) {
 // Controller for powers list in a specified category
 app.controller('CategoryCtrl', function($scope, CategoryFactory, $log, $stateParams) {
 
+    //loading
+
     CategoryFactory.fetchPowersById($stateParams.categoryId)
         .then(function(foundPowers) {
             $scope.powers = foundPowers;
+            // isloaded = true;
         })
         .catch($log.error);
 

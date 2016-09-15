@@ -7,21 +7,21 @@ const Category = Model.Category;
 const Power = Model.Power;
 
 //Get all categories
-router.get('/', function(req, res, next){
-	Category.findAll()
+router.get('/', function(req, res, next){  //url /?id=234
+	Category.findAll() //{where: req.query} {where: {id: req.query.id}} -- KHJC
 		.then(foundCategories => res.send(foundCategories))
 		.catch(next);
 });
 
 //Get all powers
-router.get('/all/powers', function(req, res, next){
+router.get('/all/powers', function(req, res, next){ //this is better in the powers route -- kHJC
     Power.findAll()
       .then(foundPowers => res.send(foundPowers))
       .catch(next);
 });
 
 //Get category by id
-router.get('/:categoryId', function(req, res, next){
+router.get('/:categoryId', function(req, res, next){ //consider just using the above -- kHJC
   Category.findById(req.params.categoryId)
     .then(foundCategory => res.send(foundCategory))
     .catch(next);
@@ -29,10 +29,10 @@ router.get('/:categoryId', function(req, res, next){
 
 
 //Get all powers within a category
-router.get('/:categoryId/powers', function(req, res, next){
+router.get('/:categoryId/powers', function(req, res, next){ //consider this in power with a query for categoryId -- KHJC
   Category.findById(req.params.categoryId)
     .then(foundCategory => {
-      foundCategory.getPowers()
+      foundCategory.getPowers() 
         .then(foundPowers => res.send(foundPowers))
     })
     .catch(next);
@@ -43,6 +43,7 @@ router.get('/:categoryId/powers', function(req, res, next){
 //////ADMIN ROUTES BELOW///////
 ///////////////////////////////
 
+///authenticate is admin -- KHJC
 
 //Create a new category
 router.post('/', function(req, res, next){

@@ -30,6 +30,7 @@ Category.belongsToMany(Power, { through: PowerCategory });
 
 Power.belongsToMany(Order, { through: PowerOrder });
 Order.belongsToMany(Power, { through: PowerOrder });
+//join table inclusion -- http://stackoverflow.com/questions/25880539/join-across-multiple-junction-tables-with-sequelize
 
 Order.belongsTo(User);
 User.hasMany(Order);
@@ -40,6 +41,9 @@ Power.hasMany(Review);
 Review.belongsTo(User);
 User.hasMany(Review);
 
+// I love you do the associations both ways! -- KHJC
+
+//consider just exporting db and using db.model('category'), etc. but you might have to think about changing the name and that being tedious -- KHJC
 module.exports = {
     db: db,
     Category: Category,

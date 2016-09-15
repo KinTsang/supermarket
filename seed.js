@@ -132,7 +132,7 @@ var seedReviews = function () {
 
 db.sync({ force: true })
     .then(function () {
-        return seedUsers();
+        return seedUsers(); //this and the next two can be done together (promise.all or bluebirds promise.join) -- KHJCND
     })
     .then(function () {
         return seedPowers();
@@ -141,7 +141,7 @@ db.sync({ force: true })
         return seedCategories();
     })
     .then(function () {
-        return seedPowerCategories();
+        return seedPowerCategories(); //same as above but with reviews -- KHJCND
     })
     .then(function () {
         return seedReviews();

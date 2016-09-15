@@ -24,12 +24,12 @@ app.config(function($stateProvider){
   })
 
   //state to create product
-  $stateProvider.state('createPower', {
+  $stateProvider.state('createPower', { //look at modals -- KHJC
     url: '/powers/create',
     templateUrl: 'js/power/power.add.html',
     controller: 'PowerCtrl',
     resolve: {
-      powerInfo: function(){ //this resolve exist to prevent creating another controller.
+      powerInfo: function(){ //this resolve exist to prevent creating another controller. -- KHJC
         return null;
       },
       categoryInfo: function($http){
@@ -90,6 +90,8 @@ app.config(function($stateProvider){
 })
 
 app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, createPowerFactory, categoryInfo, $state){
+  //ng-click on filtering by category -- factory -- get request with a query string -- all powers for a specific category -- update $scope.powers -- KHJC
+
   $scope.powerInfo = powerInfo;
 
   $scope.categoryInfo = categoryInfo;
