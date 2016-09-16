@@ -46,8 +46,6 @@ router.get('/:categoryId/powers', function(req, res, next){
 
 //Create a new category
 router.post('/', function(req, res, next){
-  console.log('CREATECAT')
-  console.log(req.body)
   Category.create(req.body)
   .then(createdCategory => res.send(createdCategory))
   .catch(next);
