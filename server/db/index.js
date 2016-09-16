@@ -8,6 +8,7 @@ var Order = require('./models/order');
 var Power = require('./models/power');
 var Review = require('./models/review');
 var User = require('./models/user');
+// var Session = db.model('Sessions');
 
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
@@ -39,6 +40,9 @@ Power.hasMany(Review);
 
 Review.belongsTo(User);
 User.hasMany(Review);
+
+// Order.belongsTo(Session);
+// Session.hasOne(Order);
 
 module.exports = {
     db: db,
