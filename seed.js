@@ -119,6 +119,16 @@ var seedPowers = function () {
             description: 'Be there in the time it takes for your Uber to come',
             price: '1299.99',
             picUrl: 'http://vignette3.wikia.nocookie.net/smallville/images/a/ab/Maxima_Arrives.png/revision/latest?cb=20090907005949'
+        }, {
+            name: 'Doorman',
+            description: 'transports people - from one room to the next. Who needs a door when you have doorman?',
+            price: '1299.99',
+            picUrl: 'http://assets.nydailynews.com/polopoly_fs/1.1094387.1339532600!/img/httpImage/image.jpg_gen/derivatives/article_750/expert13f-1-web.jpg'
+        }, {
+            name: 'Change Colors',
+            description: 'Color the world.',
+            price: '99.99',
+            picUrl: 'https://www.askideas.com/media/06/Donkey-In-Funny-Colorful-Dress.jpg'
         }
     ];
     var creatingPowers = powers.map(function(powerObj) {
@@ -134,11 +144,14 @@ var seedCategories = function () {
         },
         {
             name: 'Mental'
-        }, {
+        },
+        {
             name: 'Physics/Reality Manipulation'
-        }, {
+        },
+        {
             name: 'Transportation/Travel'
-        }, {
+        },
+        {
             name: 'Divine'
         }
     ];
@@ -197,6 +210,13 @@ var seedPowerCategories = function () {
         {
             powerId: 12,
             categoryId: 4
+        }, {
+            powerId: 13,
+            categoryId: 4
+        },
+        {
+          powerId: 14,
+          categoryId: 1
         }
     ];
     var creatingPowerCategories = powercategories.map(function(pcObj) {
