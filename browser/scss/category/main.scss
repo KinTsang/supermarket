@@ -1,0 +1,17 @@
+#powersbycategory {
+  body {
+      padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  }
+
+  .portfolio-item {
+      margin-bottom: 25px;
+  }
+  img.resize{
+     width:300px;
+     height:255px;
+     margin: 0 auto;
+   }
+  footer {
+      margin: 50px 0;
+  }
+}
