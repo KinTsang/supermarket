@@ -147,6 +147,6 @@ describe('Power model', function () {
     //         });
     //     });
 
-    });
+    //});
 
 });

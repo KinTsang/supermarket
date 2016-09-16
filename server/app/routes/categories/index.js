@@ -1,10 +1,8 @@
 'use strict'
 
-const express = require('express');
-const router = express.Router();
-const Model = require('../../../db');
-const Category = Model.Category;
-const Power = Model.Power;
+var router = require('express').Router();
+var Models = require('../../../db');
+var Category = Models.Category;
 
 //Get all categories
 router.get('/', function(req, res, next){
@@ -15,7 +13,7 @@ router.get('/', function(req, res, next){
 
 //Get all powers
 router.get('/all/powers', function(req, res, next){
-    Power.findAll()
+  Power.findAll()
       .then(foundPowers => res.send(foundPowers))
       .catch(next);
 });
