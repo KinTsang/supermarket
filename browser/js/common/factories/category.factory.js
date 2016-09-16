@@ -18,7 +18,6 @@ app.factory('CategoryFactory', function($http) {
       .then(formatData);
    }
 
-
     CategoryFactory.editCategory = function(id, name) {
         return $http.put('/api/categories/' + id, { name: name })
             .then(formatData);
