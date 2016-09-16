@@ -18,10 +18,11 @@ var User = require('./models/user');
 var PowerCategory = db.define('power_category');
 var PowerOrder = db.define('power_order', {
     quantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
     },
     priceAtPurchase: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
     }
 });
 
