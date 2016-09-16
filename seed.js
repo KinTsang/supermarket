@@ -54,17 +54,20 @@ var seedPowers = function () {
         {
             name: 'Super Speed',
             description: 'Go fast.',
-            price: 499.99
+            price: 499.99,
+            picUrl: 'http://cdn.okcimg.com/php/load_okc_image.php/images/0x0/0x0/0/8903743280997465155.jpeg___1_500_1_500_cb94de6a_.png'
         },
         {
             name: 'Sweaty Hands',
             description: 'Feel the moisture.',
-            price: 1.99
+            price: 1.99,
+            picUrl: 'http://www.healthxchange.com.sg/healthyliving/SkinBeauty/PublishingImages/Sweaty-Palms-Pic-1.jpg'
         },
         {
             name: 'Telepathy',
             description: 'Read minds.',
-            price: 999.99
+            price: 999.99,
+            picUrl: 'http://www.crystalinks.com/telepathy500a.jpg'
         }
     ];
     var creatingPowers = powers.map(function(powerObj) {
