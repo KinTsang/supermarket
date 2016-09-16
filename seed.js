@@ -104,6 +104,21 @@ var seedPowers = function () {
             description: 'You believe you can fly? Can you touch the sky?',
             price: 799.99,
             picUrl: 'http://cdn1.theodysseyonline.com/files/2016/02/21/635916300066231601-352364023_Man-flying-1.jpeg'
+        }, {
+            name: 'Immortality',
+            description: 'Live forever',
+            price: '888.99',
+            picUrl: 'http://gnosticwarrior.com/wp-content/uploads/2015/05/immortality.jpg'
+        }, {
+            name: 'Healing',
+            description: 'Make people better',
+            price: '699.99',
+            picUrl: 'http://www.adoptionbirthmothers.com/wp-content/uploads/2013/11/magic-fairy-dust-of-birthmother-healing.jpg'
+        }, {
+            name: 'Teleportation',
+            description: 'Be there in the time it takes for your Uber to come',
+            price: '1299.99',
+            picUrl: 'http://vignette3.wikia.nocookie.net/smallville/images/a/ab/Maxima_Arrives.png/revision/latest?cb=20090907005949'
         }
     ];
     var creatingPowers = powers.map(function(powerObj) {
@@ -119,6 +134,12 @@ var seedCategories = function () {
         },
         {
             name: 'Mental'
+        }, {
+            name: 'Physics/Reality Manipulation'
+        }, {
+            name: 'Transportation/Travel'
+        }, {
+            name: 'Divine'
         }
     ];
     var creatingCategories = categories.map(function(cateObj) {
@@ -151,7 +172,7 @@ var seedPowerCategories = function () {
         },
         {
             powerId: 6,
-            categoryId: 2
+            categoryId: 4
         },
         {
             powerId: 7,
@@ -163,8 +184,20 @@ var seedPowerCategories = function () {
         },
         {
             powerId: 9,
-            categoryId: 1
+            categoryId: 4
         },
+        {
+            powerId: 10,
+            categoryId: 5
+        },
+        {
+            powerId: 11,
+            categoryId: 5
+        },
+        {
+            powerId: 12,
+            categoryId: 4
+        }
     ];
     var creatingPowerCategories = powercategories.map(function(pcObj) {
         return PowerCategory.create(pcObj);
