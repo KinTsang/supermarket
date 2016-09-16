@@ -8,23 +8,12 @@ app.factory('CategoryFactory', function($http) {
             .then(formatData);
     }
 
-    CategoryFactory.fetchAllPowers = function() {
-        return $http.get('/api/categories/all/powers')
-            .then(formatData);
-    }
-
-    CategoryFactory.fetchCatById = function(id) {
+    CategoryFactory.fetchById = function(id) {
         return $http.get('/api/categories/' + id)
             .then(formatData);
     }
 
-    CategoryFactory.fetchPowersById = function(id) {
-        return $http.get('/api/categories/' + id + '/powers')
-            .then(formatData);
-    }
-
-   CategoryFactory.createCategory = function (name) {
-    console.log('name')
+   CategoryFactory.create = function (name) {
      return $http.post('/api/categories', {name: name})
       .then(formatData);
    }
@@ -36,12 +25,11 @@ app.factory('CategoryFactory', function($http) {
     }
 
     CategoryFactory.editStatus = function(id, boolean) {
-      console.log(id, boolean)
         return $http.put('/api/categories/' + id, { active: boolean })
             .then(formatData);
     }
 
-   CategoryFactory.deleteCategory = function (id) {
+   CategoryFactory.delete = function (id) {
     return $http.delete('/api/categories/' + id)
    }
 
