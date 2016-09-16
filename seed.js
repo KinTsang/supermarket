@@ -54,17 +54,81 @@ var seedPowers = function () {
         {
             name: 'Super Speed',
             description: 'Go fast.',
-            price: 499.99
+            price: 499.99,
+            picUrl: 'http://cdn.okcimg.com/php/load_okc_image.php/images/0x0/0x0/0/8903743280997465155.jpeg___1_500_1_500_cb94de6a_.png'
         },
         {
             name: 'Sweaty Hands',
             description: 'Feel the moisture.',
-            price: 1.99
+            price: 1.99,
+            picUrl: 'http://www.healthxchange.com.sg/healthyliving/SkinBeauty/PublishingImages/Sweaty-Palms-Pic-1.jpg'
         },
         {
             name: 'Telepathy',
             description: 'Read minds.',
-            price: 999.99
+            price: 999.99,
+            picUrl: 'http://www.crystalinks.com/telepathy500a.jpg'
+        },
+        {
+            name: 'Invisibility',
+            description: 'Disappear',
+            price: 799.99,
+            picUrl: 'http://images.huffingtonpost.com/2014-10-08-metamaterialsbreakthroughwidespectrumopticalinvisibilitycloak4.jpg'
+        },
+        {
+            name: 'Superhuman Strength',
+            description: 'Destroy things.',
+            price: 399.99,
+            picUrl: 'http://4.bp.blogspot.com/-mV0ryVXz66w/UA2n0occotI/AAAAAAAABEA/EnCQipDXJr8/s1600/hancock_lifting_car_tracks.jpeg'
+        },
+        {
+            name: 'Time Travel',
+            description: 'Go back or forward',
+            price: 1299.99,
+            picUrl: 'http://ichef-1.bbci.co.uk/news/1024/media/images/80912000/jpg/_80912281_153781677.jpg'
+        },
+        {
+            name: 'Night Vision',
+            description: 'See in the dark',
+            price: 199.99,
+            picUrl: 'http://cdn.lightgalleries.net/4ebd8bde12cf2/images/Iraq_Perspective_BookEdit_0049-2.jpg'
+        },
+        {
+            name: 'Omnilinguilism',
+            description: 'Understand any language',
+            price: 2299.99,
+            picUrl: 'http://www.flippedclassroomworkshop.com/wp-content/uploads/2015/07/hello-foreign-languages.png'
+        },
+        {
+            name: 'Fly',
+            description: 'You believe you can fly? Can you touch the sky?',
+            price: 799.99,
+            picUrl: 'http://cdn1.theodysseyonline.com/files/2016/02/21/635916300066231601-352364023_Man-flying-1.jpeg'
+        }, {
+            name: 'Immortality',
+            description: 'Live forever',
+            price: '888.99',
+            picUrl: 'http://gnosticwarrior.com/wp-content/uploads/2015/05/immortality.jpg'
+        }, {
+            name: 'Healing',
+            description: 'Make people better',
+            price: '699.99',
+            picUrl: 'http://www.adoptionbirthmothers.com/wp-content/uploads/2013/11/magic-fairy-dust-of-birthmother-healing.jpg'
+        }, {
+            name: 'Teleportation',
+            description: 'Be there in the time it takes for your Uber to come',
+            price: '1299.99',
+            picUrl: 'http://vignette3.wikia.nocookie.net/smallville/images/a/ab/Maxima_Arrives.png/revision/latest?cb=20090907005949'
+        }, {
+            name: 'Doorman',
+            description: 'transports people - from one room to the next. Who needs a door when you have doorman?',
+            price: '1299.99',
+            picUrl: 'http://assets.nydailynews.com/polopoly_fs/1.1094387.1339532600!/img/httpImage/image.jpg_gen/derivatives/article_750/expert13f-1-web.jpg'
+        }, {
+            name: 'Change Colors',
+            description: 'Color the world.',
+            price: '99.99',
+            picUrl: 'https://www.askideas.com/media/06/Donkey-In-Funny-Colorful-Dress.jpg'
         }
     ];
     var creatingPowers = powers.map(function(powerObj) {
@@ -80,6 +144,15 @@ var seedCategories = function () {
         },
         {
             name: 'Mental'
+        },
+        {
+            name: 'Physics/Reality Manipulation'
+        },
+        {
+            name: 'Transportation/Travel'
+        },
+        {
+            name: 'Divine'
         }
     ];
     var creatingCategories = categories.map(function(cateObj) {
@@ -101,6 +174,49 @@ var seedPowerCategories = function () {
         {
             powerId: 3,
             categoryId: 2
+        },
+        {
+            powerId: 4,
+            categoryId: 1
+        },
+        {
+            powerId: 5,
+            categoryId: 1
+        },
+        {
+            powerId: 6,
+            categoryId: 4
+        },
+        {
+            powerId: 7,
+            categoryId: 1
+        },
+        {
+            powerId: 8,
+            categoryId: 2
+        },
+        {
+            powerId: 9,
+            categoryId: 4
+        },
+        {
+            powerId: 10,
+            categoryId: 5
+        },
+        {
+            powerId: 11,
+            categoryId: 5
+        },
+        {
+            powerId: 12,
+            categoryId: 4
+        }, {
+            powerId: 13,
+            categoryId: 4
+        },
+        {
+          powerId: 14,
+          categoryId: 1
         }
     ];
     var creatingPowerCategories = powercategories.map(function(pcObj) {

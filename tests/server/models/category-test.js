@@ -47,7 +47,7 @@ describe('Category model', function () {
         });
     });
 
-    it('can update a category', (done) => {
+    xit('can update a category', (done) => {
         createCategory('Test Category 1').then(() => `return`)
         .then(() => {
             return Category.findOne({ where: { name: 'Test Category 1'} });

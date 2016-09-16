@@ -36,7 +36,7 @@ app.controller('CategoryCtrl', function($scope, CategoryFactory, $log, $statePar
 
 
 // Controller for list of ALL powers
-app.controller('AllCatCtrl', function($scope, CategoryFactory, $log, $stateParams) {
+app.controller('AllCatCtrl', function($scope, CategoryFactory, $log) {
 
     CategoryFactory.fetchAllPowers()
         .then(function(foundPowers) {

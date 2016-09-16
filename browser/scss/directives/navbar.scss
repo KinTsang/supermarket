@@ -36,6 +36,18 @@ navbar {
       background: none;
     }
   }
+  .logo {
+    text-decoration: none !important;
+    color: #000000;
+  }
+
+  .icon-button {
+    float: right;
+    background: none;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
 
   .login-button {
     float: right;
@@ -58,5 +70,16 @@ navbar {
       cursor: pointer;
     }
   }
-
+  .dropdown.dropdown-scroll .dropdown-menu {
+    max-height: 200px;
+    width: 60px;
+    //overflow: auto;
+    right: 0px;
+    float: right;
+  }
+  .search-control {
+      padding: 5px 10px;
+      float: right;
+      right: 0px;
+  }
 }

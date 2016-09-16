@@ -5,8 +5,12 @@
     <title>SUPERmarket</title>
     <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-xeditable/0.3.0/css/xeditable.css">
     <script src="/lodash/index.js"></script>
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bootstrap/js/carousel.js"></script>
     <script src="/angular/angular.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
@@ -18,9 +22,42 @@
 </head>
 <body ng-app="FullstackGeneratedApp">
     <navbar></navbar>
+    <!-- <carousel> </carousel> -->
+    <div class="row carousel-holder" ng-if="'home' | isState">
+
+        <div class="col-md-12">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="slide-image img-responsive center-block" src="images/callingsuperheroes.png" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="slide-image img-responsive center-block" src="images/superheroes.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="slide-image img-responsive center-block" src="images/bam.jpg" alt="">
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+
+    </div>
     <div class="container-fluid">
         <div id="main" ui-view></div>
     </div>
-
+    <footer class="text-center">
+    <p> &copy; 2016 SUPERmarket Co.| All Rights Reserved </p>
+    </footer>
 </body>
 </html>
