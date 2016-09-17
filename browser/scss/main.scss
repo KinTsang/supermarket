@@ -2,7 +2,9 @@
   box-sizing: border-box;
 }
 
+
 body {
+  font-family: 'Reem Kufi', sans-serif;
   background: #fdfdfd;
 }
 
@@ -19,8 +21,37 @@ body {
   margin: 0 auto;
 }
 
+   .carousel-holder {
+    margin-bottom: 30px;
+  }
+
+  .carousel-control, .item {
+    border-radius: 4px;
+  }
+
+  .carousel img {
+    width: 100%;
+    height: 300px;
+}
+  .slide-image {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .slide-image img {
+     height: 300px;
+     margin: 0 auto;
+   }
+
+
+
 @import 'directives/main';
 @import 'home/main';
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
+@import 'category/main';
+@import 'signup/main';
+@import 'power/main';

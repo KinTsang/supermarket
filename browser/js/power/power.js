@@ -11,7 +11,7 @@ app.config(function($stateProvider) {
             powerInfo: PowersFactory => PowersFactory.fetchAll(),
             categoryInfo: CategoryFactory => CategoryFactory.fetchAll()
         }
-    })
+    });
 
     //state to create product
     $stateProvider.state('createPower', {
@@ -48,11 +48,12 @@ app.config(function($stateProvider) {
 
 })
 
-app.controller('PowerCtrl', function($scope, powerInfo, PowerFactory, categoryInfo, $state) {
+app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, createPowerFactory, categoryInfo, $state, CartFactory) {
     $scope.powerInfo = powerInfo;
     $scope.categoryInfo = categoryInfo;
     $scope.updateInfo = powerInfo;
     $scope.created = false;
+    $scope.itemInfo = { powerId: $scope.powerInfo.id };
 
     $scope.updatePosting = function(updateInfo) {
         PowerFactory.update(updateInfo)
@@ -67,4 +68,10 @@ app.controller('PowerCtrl', function($scope, powerInfo, PowerFactory, categoryIn
 
             })
     }
-})
+
+    $scope.addToCart = function(itemInfo) {
+        console.log("Invoking addToCart function with the following arg: ", itemInfo)
+        CartFactory.addToCart(itemInfo)
+            .then((addedCart) => addedCart.data);
+    }
+});

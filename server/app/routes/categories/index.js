@@ -4,6 +4,7 @@ const router = express.Router();
 const Models = require('../../../db');
 const Category = Models.Category;
 
+
 // ROUTES BEGINNING '/api/categories'
 
 //Get all categories

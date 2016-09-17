@@ -1,6 +1,6 @@
 <nav class="navbar navbar-static-top">
     <div class="container">
-        <a ui-sref="home"><h1 class="text-center">SUPERmarket</h1></a>
+        <a class="logo" ui-sref="home"><h1 class="text-center">SUPERmarket</h1></a>
         <ul class="nav navbar-nav">
             <li>
                 <a ui-sref-active="active" ui-sref="powers({categoryId: 'all'})">All Powers</a>
@@ -13,9 +13,34 @@
             </li>
         </ul>
         <button ng-show="!user" ui-sref="login" class="btn login-button"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+        <button class="btn icon-button">
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+        </button>
+        <div class="dropdown dropdown-scroll">
+            <button class="btn icon-button dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <div class="input-group input-group-sm search-control">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Query" ng-model="query">
+                    </input>
+            </div>
+        </li>
+            </ul>
+        </div>
+
+
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>
         </div>
     </div>
 </nav>
+
+<!-- tlee questions: order of buttons reversed from written  because of float right. any way to change? -->
+
+
