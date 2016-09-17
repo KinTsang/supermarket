@@ -13,12 +13,12 @@ app.factory('CategoryFactory', function($http) {
             .then(formatData);
     }
 
-   CategoryFactory.create = function (name) {
-     return $http.post('/api/categories', {name: name})
-      .then(formatData);
-   }
+    CategoryFactory.create = function(name) {
+        return $http.post('/api/categories', { name: name })
+            .then(formatData);
+    }
 
-    CategoryFactory.editCategory = function(id, name) {
+    CategoryFactory.editName = function(id, name) {
         return $http.put('/api/categories/' + id, { name: name })
             .then(formatData);
     }
@@ -28,9 +28,9 @@ app.factory('CategoryFactory', function($http) {
             .then(formatData);
     }
 
-   CategoryFactory.delete = function (id) {
-    return $http.delete('/api/categories/' + id)
-   }
+    // CategoryFactory.delete = function(id) {
+    //     return $http.delete('/api/categories/' + id)
+    // }
 
-  return CategoryFactory;
+    return CategoryFactory;
 })

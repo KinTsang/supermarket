@@ -6,7 +6,7 @@ app.factory('PowerFactory', function($http) {
     PowerFactory.fetchAll = function(categoryId) {
         var route = '/api/powers/';
         if (categoryId) {
-            route += ('?catId=' + categoryId);
+            route += ('?categoryId=' + categoryId);
         }
         return $http.get(route)
             .then(formatData);
@@ -17,12 +17,12 @@ app.factory('PowerFactory', function($http) {
             .then(formatData);
     }
 
-    PowerFactory.update = function(powerInfo) {
-        return $http.put('api/powers/' + powerInfo.id, powerInfo)
-    }
-
     PowerFactory.create = function(newPower) {
         return $http.post('/api/powers/create', newPower)
+    }
+
+    PowerFactory.update = function(powerInfo) {
+        return $http.put('api/powers/' + powerInfo.id, powerInfo)
     }
 
     return PowerFactory;

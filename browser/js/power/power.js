@@ -2,6 +2,7 @@
 
 app.config(function($stateProvider) {
 
+    //state to for admin to manage all powers
     $stateProvider.state('powerList', {
         url: '/admin/powers/',
         templateUrl: 'js/power/power.list.html',
@@ -55,9 +56,7 @@ app.controller('PowerCtrl', function($scope, powerInfo, PowerFactory, categoryIn
 
     $scope.updatePosting = function(updateInfo) {
         PowerFactory.update(updateInfo)
-            .then(function(updatedPower) {
-                $state.go('powerList');
-            })
+            .then(updatedPower => $state.go('powerList'))
     }
 
     $scope.createNewPower = function(newPower) {

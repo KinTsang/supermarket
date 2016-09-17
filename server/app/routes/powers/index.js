@@ -3,18 +3,28 @@ const express = require('express')
 const router = express.Router(); // eslint-disable-line new-cap
 const Models = require('../../../db');
 const Power = Models.Power;
+const Category = Models.Category;
 
 // ROUTES BEGINNING '/api/powers'
 
 //Get all powers (or all powers of a specified category)
-router.get('/', function(req, res, next){
-    Power.findAll({where: req.query})
+router.get('/', function(req, res, next) {
+    var searchParams = {
+        include: {
+            model: Category
+        }
+    };
+    if (req.query.categoryId !== 'all'){
+        searchParams.include.where = { id: req.query.categoryId };
+    }
+    console.log('Getting powers from category: ' + req.query.categoryId);
+    Power.findAll(searchParams)
         .then(allPower => res.status(200).send(allPower))
         .catch(next);
 })
 
 //Get a specific power by Id
-router.get('/:powerId', function(req, res, next){
+router.get('/:powerId', function(req, res, next) {
     Power.findById(req.params.powerId)
         .then(foundPower => res.status(200).send(foundPower))
         .catch(next);
@@ -25,7 +35,7 @@ router.get('/:powerId', function(req, res, next){
 ///////////////////////////////
 
 //Create a new power
-router.post('/create', function(req, res, next){
+router.post('/create', function(req, res, next) {
     Power.create(req.body)
         .then(createdPower => createdPower.setCategory(req.body.categoryId))
         .then(createdPowerWithAssociation => res.status(200).send(createdPowerWithAssociation))
@@ -33,7 +43,7 @@ router.post('/create', function(req, res, next){
 })
 
 //Modify a power
-router.put('/:powerId', function(req, res, next){
+router.put('/:powerId', function(req, res, next) {
     Power.findById(req.params.powerId)
         .then(powerFound => powerFound.update(req.body))
         .then(updatedPower => res.status(200).send(updatedPower))

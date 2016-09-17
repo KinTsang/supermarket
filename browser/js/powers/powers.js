@@ -3,28 +3,27 @@
 app.config(function($stateProvider) {
 
     // State for powers list in a specified category
+
     $stateProvider.state('powers', {
-        url: '/powers',
+        url: '/powers?categoryId',
         templateUrl: 'js/powers/powers.html',
         controller: 'PowersCtrl',
-        //RESOLVE
+        resolve: {
+            powers: function(PowerFactory, $stateParams) {
+                return PowerFactory.fetchAll($stateParams.categoryId);
+            },
+            category: function(CategoryFactory, $stateParams) {
+                if ($stateParams.categoryId === 'all') return { name: 'All' };
+                return CategoryFactory.fetchById($stateParams.categoryId);
+            }
+        }
     });
 
 });
 
 
 // Controller for powers list in a specified category
-app.controller('PowersCtrl', function($scope, PowerFactory, $log, $stateParams) {
-
-    PowerFactory.fetchAll($stateParams.categoryId)
-        .then(function(foundPowers) {
-            $scope.powers = foundPowers;
-        })
-        .catch($log.error);
-
-    PowerFactory.fetchCatById($stateParams.categoryId)
-        .then(function(foundCategory) {
-            $scope.category = foundCategory;
-        })
-        .catch($log.error);
+app.controller('PowersCtrl', function($scope, $log, $stateParams, powers, category) {
+    $scope.powers = powers;
+    $scope.category = category;
 });
