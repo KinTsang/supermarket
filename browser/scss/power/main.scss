@@ -1,0 +1,26 @@
+#individualPowers{
+  body {
+      padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  }
+
+  img.resize{
+     width:400px;
+     height:300px;
+     margin: 0 auto;
+     display: inline-block;
+   }
+
+  footer {
+      margin: 50px 0;
+  }
+
+    .content-wrapper {
+    max-width: 1140px;
+    background: #fff;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border: 0px;
+    border-radius: 0px;
+    }
+}
