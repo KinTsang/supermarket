@@ -89,7 +89,7 @@ app.config(function($stateProvider){
 
 })
 
-app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, createPowerFactory, categoryInfo, $state){
+app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, createPowerFactory, categoryInfo, $state, CartFactory){
   $scope.powerInfo = powerInfo;
 
   $scope.categoryInfo = categoryInfo;
@@ -97,6 +97,10 @@ app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, crea
   $scope.updateInfo = powerInfo;
 
   $scope.created = false;
+
+  $scope.itemInfo = {
+    powerId: $scope.powerInfo.id
+  }
 
   $scope.updatePosting = function(updateInfo){
     console.log('invoking updatePosting function', updateInfo)
@@ -117,6 +121,13 @@ app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, crea
 
     })
   }
+
+  $scope.addToCart = function(itemInfo){
+    console.log("Invoking addToCart function with the following arg: ", itemInfo)
+    CartFactory.addToCart(itemInfo)
+    .then((addedCart) => addedCart.data);
+  }
+
 })
 
 
