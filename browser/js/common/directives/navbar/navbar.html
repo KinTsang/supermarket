@@ -8,15 +8,15 @@
             <li ng-repeat="category in categories">
                 <a ui-sref-active="active" ui-sref="powers({categoryId: category.id})">{{category.name}} Powers</a>
             </li>
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+<!--             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-            </li>
+            </li> -->
         </ul>
-        <button ng-show="!user" ui-sref="login" class="btn login-button"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+<!--         <button ng-show="!user" ui-sref="login" class="btn login-button"><span class="glyphicon glyphicon-log-in"></span> Login</button>
         <button class="btn icon-button">
           <span class="glyphicon glyphicon-shopping-cart"></span>
-        </button>
-        <div class="dropdown dropdown-scroll">
+        </button> -->
+<!--         <div class="dropdown dropdown-scroll">
             <button class="btn icon-button dropdown-toggle" data-toggle="dropdown">
               <span class="glyphicon glyphicon-search"></span>
             </button>
@@ -31,14 +31,18 @@
             </div>
         </li>
             </ul>
-        </div>
+        </div> -->
 
 
-        <div ng-show="user" class="welcome">
-            <span>Welcome, {{ user.email }}!</span>
-            <a ng-click="logout()">Logout</a>
-        </div>
     </div>
+
+            <div ng-show="user" class="welcome">
+             <span class="glyphicon glyphicon-search"></span>
+            <span>Welcome, {{ user.email }}!</span>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <a ng-show="user" ui-sref="accountManagement" class="account">My Account </a>
+            <a ng-show="user" ng-click="logout()" class="logout">Logout</a>
+        </div>
 </nav>
 
 <!-- tlee questions: order of buttons reversed from written  because of float right. any way to change? -->

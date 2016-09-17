@@ -1,7 +1,12 @@
-<h2 ng-show="category">CATEGORY PAGE FOR: {{category.name}}</h2>
-<div>
-    <div ng-repeat='power in powers' class="col-md-4" style="background-color: #DDD; margin: 10px; text-align: center; height: 200px">
-        <img ng-src="{{power.picUrl}}" class="img-responsive">
-        <h4> <a ui-sref="power({powerId: power.id })">{{power.name}}</a> </h4>
+<section id="powersbycategory">
+  <h2 ng-show="category" class="text-center">{{category.name}} Products</h2>
+
+  <div class="row">
+    <div class="col-md-4 portfolio-item" ng-repeat='power in powers' style="text-align: center;">
+        <img class="img-responsive resize" ng-src="{{power.picUrl}}">
+        <h3>
+            <a ui-sref="power({powerId: power.id })">{{power.name}}</a>
+        </h3>
     </div>
-</div>
+  </div>
+</section>
