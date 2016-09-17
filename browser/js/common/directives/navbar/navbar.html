@@ -3,10 +3,10 @@
         <a class="logo" ui-sref="home"><h1 class="text-center">SUPERmarket</h1></a>
         <ul class="nav navbar-nav">
             <li>
-                <a ui-sref-active="active" ui-sref="allCategory">All Powers</a>
+                <a ui-sref-active="active" ui-sref="powers({categoryId: 'all'})">All Powers</a>
             </li>
             <li ng-repeat="category in categories">
-                <a ui-sref-active="active" ui-sref="category({categoryId: category.id})">{{category.name}} Powers</a>
+                <a ui-sref-active="active" ui-sref="powers({categoryId: category.id})">{{category.name}} Powers</a>
             </li>
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
@@ -40,7 +40,6 @@
         </div>
     </div>
 </nav>
-
 
 <!-- tlee questions: order of buttons reversed from written  because of float right. any way to change? -->
 

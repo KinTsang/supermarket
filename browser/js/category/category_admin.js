@@ -8,12 +8,6 @@ app.config(function ($stateProvider){
     url: '/admin/category/edit/:categoryId',
     templateUrl: 'js/category/category_admin_edit.html',
     controller: 'AdminCategoryCtrl',
-    // resolve: {
-    //   currentCategory: function(CategoryFactory, $stateParams){
-    //     CategoryFactory.fetchById($stateParams.categoryId)
-
-    //   }
-    // }
   })
   .state('addcategory', {
     url: '/admin/category/add',
