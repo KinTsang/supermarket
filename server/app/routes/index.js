@@ -7,6 +7,7 @@ router.use('/categories', require('./categories'));
 
 //route to query powers
 router.use('/powers', require('./powers'));
+router.use('/users', require('./users'));
 
 // Make sure this is after all of
 // the registered routes!
