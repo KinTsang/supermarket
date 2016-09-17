@@ -48,7 +48,8 @@ app.config(function($stateProvider) {
 
 })
 
-app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, createPowerFactory, categoryInfo, $state, CartFactory) {
+app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, PowerFactory, CartFactory) {
+  
     $scope.powerInfo = powerInfo;
     $scope.categoryInfo = categoryInfo;
     $scope.updateInfo = powerInfo;
@@ -70,7 +71,6 @@ app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, crea
     }
 
     $scope.addToCart = function(itemInfo) {
-        console.log("Invoking addToCart function with the following arg: ", itemInfo)
         CartFactory.addToCart(itemInfo)
             .then((addedCart) => addedCart.data);
     }
