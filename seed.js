@@ -246,6 +246,14 @@ var seedReviews = function () {
     return Promise.all(creatingReviews);
 };
 
+var seedOrders = function () {
+    var orders = [
+        {
+            status: 'open'
+        }
+    ];
+};
+
 db.sync({ force: true })
     .then(function () {
         return seedUsers();

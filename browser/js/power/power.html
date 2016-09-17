@@ -38,12 +38,15 @@
           <br>
           <div class="product-stock">In Stock</div>
           <hr>
+          <form name="addToCartForm" ng-submit="addToCart(itemInfo)" novalidate>
+            Quantity:
+            <input type="number" name="quantity" ng-model="itemInfo.quantity">
           <div class="btn-group cart">
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" ng-click="addToCart(itemInfo)">
               Add to cart
-              [This button should only work if in stock]
             </button>
           </div>
+          </form>
           <div class="btn-group wishlist">
             <button type="button" class="btn btn-danger">
               Add to wishlist
