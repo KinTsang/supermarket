@@ -8,7 +8,7 @@ app.config(function($stateProvider) {
         templateUrl: 'js/power/power.list.html',
         controller: 'PowerCtrl',
         resolve: {
-            powerInfo: PowersFactory => PowersFactory.fetchAll(),
+            powerInfo: PowerFactory => PowerFactory.fetchAll(),
             categoryInfo: CategoryFactory => CategoryFactory.fetchAll()
         }
     });
@@ -30,7 +30,7 @@ app.config(function($stateProvider) {
         templateUrl: 'js/power/power.html',
         controller: 'PowerCtrl',
         resolve: {
-            powerInfo: (PowersFactory, $stateParams) => PowersFactory.fetchById($stateParams.powerId),
+            powerInfo: (PowerFactory, $stateParams) => PowerFactory.fetchById($stateParams.powerId),
             categoryInfo: CategoryFactory => CategoryFactory.fetchAll()
         }
     });
@@ -41,7 +41,7 @@ app.config(function($stateProvider) {
         templateUrl: 'js/power/power.edit.html',
         controller: 'PowerCtrl',
         resolve: {
-            powerInfo: (PowersFactory, $stateParams) => PowersFactory.fetchById($stateParams.powerId),
+            powerInfo: (PowerFactory, $stateParams) => PowerFactory.fetchById($stateParams.powerId),
             categoryInfo: CategoryFactory => CategoryFactory.fetchAll()
         }
     });
