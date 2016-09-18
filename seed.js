@@ -238,6 +238,12 @@ var seedReviews = function () {
             rating: 3,
             powerId: 1,
             userId: 2
+        },
+        {
+            description: 'The cost of this power is too damn high!',
+            rating: 1,
+            powerId: 2,
+            userId: 1
         }
     ];
     var creatingReviews = reviews.map(function(rObj) {
