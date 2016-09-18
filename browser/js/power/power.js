@@ -49,7 +49,7 @@ app.config(function($stateProvider) {
 })
 
 app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, PowerFactory, CartFactory) {
-  
+
     $scope.powerInfo = powerInfo;
     $scope.categoryInfo = categoryInfo;
     $scope.updateInfo = powerInfo;
