@@ -30,10 +30,15 @@ router.get('/:reviewId', function(req, res, next) {
 ///////////////////////////////
 
 //Create a new review
-router.post('/create', function(req, res, next) {
-    Review.create(req.body)
-        .then(createdReview => res.status(200).send(createdReview))
-        .catch(next);
+router.post('/create/:powerId', function(req, res, next) {
+    Review.create({
+        description: req.body.description,
+        rating: req.body.rating,
+        powerId: req.params.powerId,
+        userId: req.session.userId
+    })
+    .then((createdReview) => res.send(createdReview))
+    .catch(next);
 })
 
 //Modify a power
