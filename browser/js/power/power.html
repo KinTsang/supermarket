@@ -16,6 +16,7 @@
                         <hr>
                         <div class="product-price">{{powerInfo.price}}</div>
                         <div class="product-stock">In Stock</div>
+                        <hr>
                         <ul class="list-inline list-unstyled">
                             <li><span><i class="glyphicon glyphicon-calendar"></i>{{powerInfo.createdAt | date:"MM/dd/yyyy"}}</span></li>
                             <li>|</li>
@@ -28,12 +29,7 @@
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star-empty"></span>
                             </li>
-                            <br>
-                            <br>
-                            <div class="product-price">{{powerInfo.price}}</div>
-                            <br>
-                            <div class="product-stock">In Stock</div>
-                            <hr>
+
                             <form name="addToCartForm" ng-submit="addToCart(itemInfo)" novalidate>
                                 Quantity:
                                 <input type="number" name="quantity" ng-model="itemInfo.quantity">

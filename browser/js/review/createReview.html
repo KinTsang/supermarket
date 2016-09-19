@@ -1,0 +1,8 @@
+<form name="createReviewForm" ng-submit="createReview(newReview)" novalidate>
+    <input type="text" ng-model="newReview.description" name="description" placeholder="Enter reviews here">
+    <br>
+    <div ng-init="rating = star.rating + 1"></div>
+    <div class="star-rating list-inline" star-rating rating-value="rating" data-max="5" on-rating-selected="newReview.rating = rating"></div>
+    <p ng-show="reviewSubmitted">Review submitted successfully!</p>
+    <button class="btn btn-primary" ng-show="!reviewSubmitted">Submit</button>
+</form>

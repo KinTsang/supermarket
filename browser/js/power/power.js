@@ -87,6 +87,8 @@ app.config(function($stateProvider){
     }
   });
 
+
+
 })
 
 app.controller('PowerCtrl', function($scope, powerInfo, updatePowerFactory, createPowerFactory, categoryInfo, $state, CartFactory){

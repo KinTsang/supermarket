@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class = "col-md-6">
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="review in reviewInfo">
+            {{review.description}}
+            <br>
+              <span>Created At: {{review.createdAt | date: "MM/dd/yyyy"}}</span>
+              <div ng-repeat="number in review.rating">
+                {{number}}
+                <span class="glyphicon glyphicon-star">
+                </span>
+              </div>
+            </li>
+            <br>
+        </li>
+    </ul>
+    </div>
+    </div>
+</div>

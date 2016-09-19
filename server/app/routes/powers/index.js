@@ -5,6 +5,30 @@ var _ = require('lodash');
 var Models = require('../../../db');
 var Power = Models.Power;
 var PowerCategory = Models.PowerCategory;
+var Review = Models.Review;
+
+router.post('/addReviews/:powerId', function(req, res, next){
+    console.log("The addReview route is hit: ", req.body)
+    Review.create({
+        description: req.body.description,
+        rating: req.body.rating,
+        powerId: req.params.powerId,
+        userId: req.session.userId
+    })
+    .then((createdReview) => res.send(createdReview))
+    .catch(next);
+})
+
+router.get('/reviews/:powerId', function(req, res, next){
+    console.log("The review query route was hit with the powerId: ", req.params.powerId)
+    Review.findAll({
+        where: {
+            powerId: req.params.powerId
+        }
+    })
+    .then((reviewInfo) => res.send(reviewInfo))
+    .catch(next)
+})
 
 router.get('/all', function(req, res, next){
     console.log('The route for GET /powers/all was hit');
