@@ -88,7 +88,7 @@ module.exports = function (app, db) {
                             res.status(400).send(err);
                         });
                     } else {
-                        res.status(200).send({
+                        res.send({
                             user: user.sanitize()
                         });
                     }
