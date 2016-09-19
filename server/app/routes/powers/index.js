@@ -4,6 +4,7 @@ const router = express.Router(); // eslint-disable-line new-cap
 const Models = require('../../../db');
 const Power = Models.Power;
 const Category = Models.Category;
+const Review = Models.Review;
 
 // ROUTES BEGINNING '/api/powers'
 
@@ -17,7 +18,6 @@ router.get('/', function(req, res, next) {
     if (req.query.categoryId !== 'all'){
         searchParams.include.where = { id: req.query.categoryId };
     }
-    console.log('Getting powers from category: ' + req.query.categoryId);
     Power.findAll(searchParams)
         .then(allPower => res.status(200).send(allPower))
         .catch(next);
@@ -25,7 +25,10 @@ router.get('/', function(req, res, next) {
 
 //Get a specific power by Id
 router.get('/:powerId', function(req, res, next) {
-    Power.findById(req.params.powerId)
+    Power.findOne({
+        where: { id: req.params.powerId },
+        include: { model: Review }
+    })
         .then(foundPower => res.status(200).send(foundPower))
         .catch(next);
 })

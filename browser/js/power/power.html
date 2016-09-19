@@ -1,4 +1,3 @@
-
 <div class="row" id="individualPowers">
     <div class="content-wrapper">
         <div class="item-container">
@@ -19,7 +18,7 @@
                         <ul class="list-inline list-unstyled">
                             <li><span><i class="glyphicon glyphicon-calendar"></i>{{powerInfo.createdAt | date:"MM/dd/yyyy"}}</span></li>
                             <li>|</li>
-                            <span><i class="glyphicon glyphicon-comment"></i> <a ui-sref="#">2 reviews</a></span>
+                            <span><i class="glyphicon glyphicon-comment"></i> <a ui-sref="#">{{powerInfo.reviews.length}} reviews</a></span>
                             <li>|</li>
                             <li>
                                 <span class="glyphicon glyphicon-star"></span>
@@ -45,7 +44,21 @@
                             </form>
                         </ul>
                     </div>
-                    </form>
+                    <div ng-show="true">
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        <div class="col-md-12" style="background-color: #EEE">
+                            <h4>
+                            <ng-pluralize count="powerInfo.reviews.length" when="{'1': '{} customer has reviewed {{powerInfo.name}}:', 'other': ''{} customers have reviewed {{powerInfo.name}}:'"></ng-pluralize>
+                            {{powerInfo.reviews.length}} customers have reviewed {{powerInfo.name}}:
+                            </h4>
+                            <div ng-repeat="review in powerInfo.reviews">
+                                <p>{{review.userId}} gave this {{review.rating}} stars!</p>
+                                <p>{{review.description}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
