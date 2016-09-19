@@ -1,92 +1,88 @@
 <div class="row" id="individualPowers">
-    <div class="content-wrapper">
-        <div class="item-container">
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="product col-md-6 service-image-left">
-                        <center>
-                            <img src="{{powerInfo.picUrl}}" class="resize" alt=""></img>
-                        </center>
-                    </div>
-                    <div class="col-md-6">
-                        <div>{{powerInfo.name}}</div>
-                        <div>{{powerInfo.description}}</div>
-                        <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
-                        <hr>
-                        <ul class="list-inline list-unstyled">
-                            <li><span><i class="glyphicon glyphicon-calendar"></i>{{powerInfo.createdAt | date:"MM/dd/yyyy"}}</span></li>
-                            <li>|</li>
-                            <span><i class="glyphicon glyphicon-comment"></i> <a ui-sref="#">{{powerInfo.reviews.length}} reviews</a></span>
-                            <li>|</li>
-                            <li>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </li>
-                            <li>|</li>
-                            <li ng-click="showFormToggle()"><span class="glyphicon glyphicon-pencil"></span> Write a review
-                            <br></li>
-                            <hr>
-                            <br>
-                            <div class="row">
-                            <div class="col-md-5">
-                                 <div>{{powerInfo.price}}</div>
-                                <br>
-                                <div>In Stock</div>
-                            </div>
-                            <div class="col-md-7">
-                                    <form name="createReviewForm" ng-submit="createReview(newReview)" ng-show="showReviewForm" novalidate>
-                                    <input type="text" ng-model="newReview.description" name="description" placeholder="Enter reviews here">
-                                    <br>
-                                    <div ng-init="rating = star.rating + 1"></div>
-                                    <div class="star-rating list-inline" star-rating rating-value="rating" data-max="5" on-rating-selected="newReview.rating = rating"></div>
-                                    <p ng-show="reviewSubmitted">Review submitted successfully!</p>
-                                    <button class="btn btn-primary" ng-show="!reviewSubmitted">Submit</button>
-                                </form>
-                            </div>
-                            </div>
-                            <hr>
-                            <form name="addToCartForm" ng-submit="addToCart(itemInfo)" novalidate>
-                                Quantity:
-                                <input type="number" name="quantity" ng-model="itemInfo.quantity">
-                                <div class="btn-group cart">
-                                    <button type="button" class="btn btn-success" ng-click="addToCart(itemInfo)">
-                                        Add to cart
-                                    </button>
-                                </div>
-                            </form>
-                            <hr>
+  <div class="content-wrapper">
+    <div class="item-container">
+      <div class="container">
+        <div class="col-md-12">
+          <div class="product col-md-6 service-image-left">
+            <center>
+              <img src="{{powerInfo.picUrl}}" class="resize" alt=""></img>
+            </center>
+          </div>
+          <div class="col-md-6">
+            <div>{{powerInfo.name}}</div>
+            <div>{{powerInfo.description}}</div>
+            <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+            <hr>
+            <ul class="list-inline list-unstyled">
+              <li><span><i class="glyphicon glyphicon-calendar"></i>{{powerInfo.createdAt | date:"MM/dd/yyyy"}}</span></li>
+              <li>|</li>
+              <span><i class="glyphicon glyphicon-comment"></i> <a ui-sref="#">{{powerInfo.reviews.length}} reviews</a></span>
+              <li>|</li>
+              <li>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+              </li>
+              <li>|</li>
+              <li ng-click="showFormToggle()"><span class="glyphicon glyphicon-pencil"></span> Write a review
+              <br></li>
+              <hr>
+              <br>
+              <div class="row">
+              <div class="col-md-5">
+                 <div>{{powerInfo.price}}</div>
+                <br>
+                <div>In Stock</div>
+              </div>
+              <div class="col-md-7">
+                  <form name="createReviewForm" ng-submit="createReview(newReview)" ng-show="showReviewForm" novalidate>
+                  <input type="text" ng-model="newReview.description" name="description" placeholder="Enter reviews here">
+                  <br>
+                  <div ng-init="rating = star.rating + 1"></div>
+                  <div class="star-rating list-inline" star-rating rating-value="rating" data-max="5" on-rating-selected="newReview.rating = rating"></div>
+                  <p ng-show="reviewSubmitted">Review submitted successfully!</p>
+                  <button class="btn btn-primary" ng-show="!reviewSubmitted">Submit</button>
+                </form>
+              </div>
+              </div>
+              <hr>
+              <form name="addToCartForm" ng-submit="addToCart(itemInfo)" novalidate>
+                Quantity:
+                <input type="number" name="quantity" ng-model="itemInfo.quantity">
+                  <button ng-disabled="disableCartBtn" type="button" class="btn btn-success" ng-click="addToCart(itemInfo)">{{ addToCartBtnText }}</button>
+              </form>
+              <hr>
 
-                        </ul>
-                    </div>
-                    <div ng-show="true">
-                        <div class="col-md-12">
-                            <hr>
-                        </div>
-                        <div class="col-md-12" style="background-color: #EEE">
-                            <h4>
-                            <ng-pluralize count="powerInfo.reviews.length" when="{'1': '{} customer has reviewed {{powerInfo.name}}:', 'other': ''{} customers have reviewed {{powerInfo.name}}:'"></ng-pluralize>
-                            {{powerInfo.reviews.length}} customers have reviewed {{powerInfo.name}}:
-                            </h4>
-                            <div ng-repeat="review in powerInfo.reviews">
-                                <div class="col-md-12">
-                                    <div class="col-md-3">
-                                     <img class="media-object" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg">
-                                     <hr>
-                                    </div>
-                                    <div class="col-md-9">
-                                     <p>{{review.rating}} stars!</p>
-                                     <p>{{review.description}}</p>
-                                    </div>
-                                </div>
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </ul>
+          </div>
+          <div ng-show="true">
+            <div class="col-md-12">
+              <hr>
             </div>
+            <div class="col-md-12" style="background-color: #EEE">
+              <h4>
+              <ng-pluralize count="powerInfo.reviews.length" when="{'1': '{} customer has reviewed {{powerInfo.name}}:', 'other': ''{} customers have reviewed {{powerInfo.name}}:'"></ng-pluralize>
+              {{powerInfo.reviews.length}} customers have reviewed {{powerInfo.name}}:
+              </h4>
+              <div ng-repeat="review in powerInfo.reviews">
+                <div class="col-md-12">
+                  <div class="col-md-3">
+                   <img class="media-object" src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg">
+                   <hr>
+                  </div>
+                  <div class="col-md-9">
+                   <p>{{review.rating}} stars!</p>
+                   <p>{{review.description}}</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,12 +1,24 @@
 'use strict'
 
 
-app.factory('CartFactory', function($http){
-  var obj = {};
+app.factory('CartFactory', function($http) {
+    let CartFactory = {};
 
-  obj.addToCart = function(itemInfo){
-    return $http.post('api/carts/', itemInfo);
-  }
+    let formatData = (res) => res.data;
 
-  return obj;
-})
+    CartFactory.addToCart = function(powerId, quantity){
+        return $http.post('/api/carts/' + powerId, { quantity: quantity });
+    };
+
+    CartFactory.fetchAll = function() {
+        return $http.get('/api/carts/')
+            .then(formatData);
+    };
+
+    CartFactory.removeFromCart = function(powerId) {
+        return $http.delete('/api/carts/' + powerId)
+            .then(formatData);
+    };
+
+    return CartFactory;
+});
