@@ -1,43 +1,67 @@
-// app.controller('NavbarCtrl', function($scope, categories) {
-//     console.log(categories);
-//     $scope.categories = categories;
+console.log("hello world");
+// app.controller('NavbarCtrl', function($scope) {
+//     $scope.searching = false;
+//     $scope.accountOptions = false;
+
+//     $scope.toggleSearching = function() {
+//         $scope.accountOptions = false;
+//         console.log('switching searching');
+//         $scope.searching = !$scope.searching;
+//     };
+
+//     $scope.toggleAccountOptions = function() {
+//         $scope.searching = false;
+//         console.log('switching accountOptions');
+//         $scope.accountOptions = !$scope.accountOptions;
+//     };
+
 // });
 
-app.directive('navbar', function ($rootScope, CategoryFactory, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function($rootScope, CategoryFactory, AuthService, AUTH_EVENTS, $state) {
 
     return {
         restrict: 'E',
         scope: {},
         templateUrl: 'js/common/directives/navbar/navbar.html',
-        link: function (scope) {
+        // controller: 'NavbarCtrl',
+        link: function(scope) {
             CategoryFactory.fetchAll()
-            .then((categories) => {
-                scope.categories = categories;
-            });
+                .then((categories) => {
+                    scope.categories = categories;
+                });
 
-            // scope.items = [
-            //     { label: 'Members Only', state: 'membersOnly', auth: true }
-            // ];
+            scope.searching = false;
+            scope.accountOptions = false;
+
+            scope.toggleSearching = function() {
+                scope.accountOptions = false;
+                scope.searching = !scope.searching;
+            };
+
+            scope.toggleAccountOptions = function() {
+                scope.searching = false;
+                scope.accountOptions = !scope.accountOptions;
+            };
 
             scope.user = null;
 
-            scope.isLoggedIn = function () {
+            scope.isLoggedIn = function() {
                 return AuthService.isAuthenticated();
             };
 
-            scope.logout = function () {
-                AuthService.logout().then(function () {
-                   $state.go('home');
+            scope.logout = function() {
+                AuthService.logout().then(function() {
+                    $state.go('home');
                 });
             };
 
-            var setUser = function () {
-                AuthService.getLoggedInUser().then(function (user) {
+            var setUser = function() {
+                AuthService.getLoggedInUser().then(function(user) {
                     scope.user = user;
                 });
             };
 
-            var removeUser = function () {
+            var removeUser = function() {
                 scope.user = null;
             };
 
