@@ -1,0 +1,22 @@
+<div class="cart">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Power Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="item in cartInfo">
+      <td>{{ item.powerName }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>${{ item.price }}</td>
+      <td><a href="#" ng-click="removeFromCart(item.powerId)"><span class="glyphicon glyphicon-trash"></span>Delete</a></td>
+    </tr>
+  </table>
+  <div class="text-right">
+    <button type="button" class="btn btn-warning" ng-click="clearCart()">Clear Cart</button>
+    <button type="button" class="btn btn-success" ng-click="checkoutCart()">Check Out</button>
+  </div>
+</div>
