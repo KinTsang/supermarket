@@ -49,10 +49,9 @@ module.exports = function (app, db) {
                 if (loginErr) return next(loginErr);
                 // We respond with a response object that has user with _id and email.
 
-                //added logic
                 var userId = user.dataValues.id
                     //if there are items in cart but not in model...then add the info from cart in model.
-                    if (req.session.cart.length){
+                    if (req.session.cart){
                         Order.findOrCreate({ //this is the same code as the post route for carts
                             where: {
                                 userId: userId,
@@ -76,7 +75,11 @@ module.exports = function (app, db) {
                                 promiseArr.push(savingOrder)
                             })
 
-                            return Promise.all(promiseArr);
+                            return Promise.all(promiseArr)
+
+                        })
+                        .then(() => {
+                            req.session.cart = [];
                         })
                         .then(() => res.send({
                             user: user.sanitize()
@@ -85,17 +88,11 @@ module.exports = function (app, db) {
                             res.status(400).send(err);
                         });
                     } else {
-                        res.send("No content in cart");
+                        res.status(200).send({
+                            user: user.sanitize()
+                        });
                     }
-
                 })
-
-                //added logic end
-                // res.status(200).send({
-                //     user: user.sanitize()
-                // });
-
-
         };
 
         passport.authenticate('local', authCb)(req, res, next);
