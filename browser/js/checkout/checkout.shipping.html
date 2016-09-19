@@ -1,0 +1,38 @@
+
+<h2> Shipping Address </h2>
+  <form name="addressForm" ng-submit="submitShipping(user.id, form)" novalidate>
+  <pre>{{addressForm.street | json}}</pre>
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" class="form-control" ng-model="form.firstName" name='firstName' ng-value="user.firstName" required>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" class="form-control" ng-model="form.lastName" name='lastName' ng-value="user.lastName" required>
+    </div>
+
+    <div class="form-group">
+      <label>Street</label>
+<input type="text" class="form-control" ng-model="form.street" name='street' ng-value="user.street" required>
+    </div>
+
+    <div class="form-group">
+      <label>City</label>
+      <input type="text" class="form-control" ng-model="form.city" name='city' ng-value="user.city" required>
+    </div>
+
+    <div class="form-group">
+      <label>State</label>
+      <input type="text" class="form-control" ng-model="form.state" name='state' ng-value="user.state" required>
+    </div>
+
+    <div class="form-group">
+      <label>Zip Code</label>
+      <input type="text" class="form-control" ng-model="form.zipcode" name='zipcode' ng-value="user.zipcode" required>
+    </div>
+
+    <button type="submit" class="btn btn-block btn-primary" ng-disabled="addressForm.$invalid">
+    Continue
+    </button>
+  </form>

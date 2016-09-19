@@ -81,7 +81,35 @@ router.get('/', function(req, res) {
 
 // TODO: a quantity of 0.2 doesn't error.
 
-// Sets qunatity of power in cart.
+
+//checkout router
+
+// router.post('/checkout', function (req, res, next) {
+//     if (!req.session.cart) { //1. if cart does not exist, redirect
+//         return res.redirect('/'); //TLEE: what should i put here???
+//     }
+//     let cart = req.session.cart; //make a cart
+
+//     var stripe = require('stripe')( //require stripe
+//         'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
+//     );
+
+//     stripe.charges.create({ //create the charge
+//       amount: Order.priceTotalAtPurchase,//in cents, NOT THIS EASY FIGURE IT OUT TLEE
+//       currency: 'usd',
+//       source: req.body.stripeToken, // obtained with Stripe.js
+//       description: "Charged"
+//     }, function(err, charge) {
+//         if (err){
+//             throw err;
+//         }
+//         req.cart = null;
+//         res.redirect('/'); //TLEE ?????
+//     });
+// });
+
+
+// Sets quantity of power in cart.
 router.put('/', function(req, res) {
 
     let aPowerId = Number(req.body.powerId);

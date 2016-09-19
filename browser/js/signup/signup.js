@@ -28,6 +28,7 @@ app.directive('compareTo', function (){
 
 app.controller('SignupCtrl', function($scope, AuthFactory, $state, $log, AuthService){
   $scope.submitSignup = function(form){
+    console.log(form);
     AuthFactory.createUser(form)
       .then(AuthService.login(form)
             .then(function () {

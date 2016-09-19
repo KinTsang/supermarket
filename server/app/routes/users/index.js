@@ -5,25 +5,37 @@ const router = express.Router();
 const Model = require('../../../db');
 const User = Model.User;
 
-//sign up: create new user
+//get all users
 
+router.get('/', function (req, res, next){
+  User.findAll
+  .then(allUsers => res.send(allUsers))
+  .catch(next);
+})
+
+//get specific user
+router.get('/:userId', function (req, res, next) {
+  User.findOne({
+    where: {id: req.params.userId}
+  })
+  .then(foundUser => res.send(foundUser))
+  .catch(next);
+});
+
+//sign up: create new user
 router.post('/', function (req, res, next) {
   User.create(req.body)
     .then(foundUser => res.status(201).send(foundUser))
     .catch(next);
 });
 
-// router.post('/', function (req, res, next) {
-//   User.findOrCreate({
-//     where: {
-//       email: req.body.email,
-//       password: req.body.password
-//     }
-//   })
-//     .spread(function (user, boolean) {
+//edit user
+router.put('/:userId', function (req, res, next) {
+  User.findById(req.params.userId)
+    .then(foundUser => foundUser.update(req.body))
+    .then(updatedUser => res.send(updatedUser))
+    .catch(next);
+})
 
-//     })
-//     .then(foundUser => res.status(201).send(foundUser))
-//     .catch(next);
-// });
+//router.put
 module.exports = router;

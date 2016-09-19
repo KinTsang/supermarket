@@ -33,11 +33,15 @@ var seedUsers = function () {
     var users = [
         {
             email: 'testing@fsa.com',
-            password: 'password'
+            password: 'password',
         },
         {
             email: 'obama@gmail.com',
-            password: 'potus'
+            password: 'potus',
+            street: '1600 Pennsylvania Ave NW',
+            city: 'Washington',
+            state: 'DC',
+            zipcode: 20500
         }
     ];
 

@@ -1,0 +1,19 @@
+<section id='checkoutUser'>
+
+  <div class='shippingAddress col-xs-4'>
+    <h3>Shipping Address</h3>
+    <p>{{user.firstName}} {{user.lastName}}</p>
+    <p>{{user.street}}</p>
+    <p>{{user.city}}, {{user.state}} {{user.zipcode}}</p>
+    <small> <a ui-sref="shipping({id: user.id})">Change</a> </small>
+  </div>
+
+  <div class="paymentMethod col-xs-4">
+    <h3> Payment Method </h3>
+  </div>
+
+  <div class="orderSummary col-xs-4">
+    <h3> Order Summary </h3>
+  </div>
+
+</section>
