@@ -53,8 +53,9 @@ app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, Po
     $scope.categoryInfo = categoryInfo;
     $scope.updateInfo = powerInfo;
     $scope.created = false;
-    $scope.itemInfo = { powerId: $scope.powerInfo.id };
-
+    $scope.itemInfo = { powerId: $scope.powerInfo.id, quantity: 1 };
+    $scope.disableCartBtn = false;
+    $scope.addToCartBtnText = "Add To Cart";
 
     $scope.updatePosting = function(updateInfo) {
         PowerFactory.update(updateInfo)
@@ -71,8 +72,12 @@ app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, Po
     }
 
     $scope.addToCart = function(itemInfo) {
-        CartFactory.addToCart(itemInfo)
-            .then((addedCart) => addedCart.data);
+        CartFactory.addToCart(powerInfo.id, itemInfo.quantity)
+            .then((addedCart) => addedCart.data)
+            .then(() => {
+                $scope.addToCartBtnText = "Added To Cart";
+                $scope.disableCartBtn = true;
+            });
     }
 
 
