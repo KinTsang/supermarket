@@ -45,16 +45,17 @@ app.config(function($stateProvider) {
             categoryInfo: CategoryFactory => CategoryFactory.fetchAll()
         }
     });
-
 })
 
-app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, PowerFactory, CartFactory) {
+app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, PowerFactory, CartFactory, ReviewFactory) {
 
     $scope.powerInfo = powerInfo;
     $scope.categoryInfo = categoryInfo;
     $scope.updateInfo = powerInfo;
     $scope.created = false;
-    $scope.itemInfo = { powerId: $scope.powerInfo.id };
+    $scope.itemInfo = { powerId: $scope.powerInfo.id, quantity: 1 };
+    $scope.disableCartBtn = false;
+    $scope.addToCartBtnText = "Add To Cart";
 
     $scope.updatePosting = function(updateInfo) {
         PowerFactory.update(updateInfo)
@@ -71,7 +72,45 @@ app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, Po
     }
 
     $scope.addToCart = function(itemInfo) {
-        CartFactory.addToCart(itemInfo)
-            .then((addedCart) => addedCart.data);
+        CartFactory.addToCart(powerInfo.id, itemInfo.quantity)
+            .then((addedCart) => addedCart.data)
+            .then(() => {
+                $scope.addToCartBtnText = "Added To Cart";
+                $scope.disableCartBtn = true;
+            });
     }
+
+
+    // rating scope
+    $scope.newReview = {}
+    $scope.reviewSubmitted = false
+    $scope.showReviewForm = false;
+
+    $scope.showFormToggle = function(){
+        $scope.showReviewForm = !$scope.showReviewForm;
+    }
+
+    $scope.createReview = function(newReview) {
+        ReviewFactory.createReview(newReview)
+            .then((createdReview) => {
+
+              $scope.newReview = {};
+              $scope.reviewSubmitted = true;
+              $scope.powerInfo.reviews.push(createdReview.data)
+              $scope.apply();
+              return createdReview
+            })
+    }
+
+    $scope.rating = 5;
 });
+
+app.factory('ReviewFactory', function($http, $stateParams) {
+    var object = {};
+
+    object.createReview = function(newReview) {
+        return $http.post('/api/reviews/create/' + $stateParams.powerId, newReview)
+    }
+
+    return object;
+})

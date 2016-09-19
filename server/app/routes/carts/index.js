@@ -44,6 +44,7 @@ router.get('/', function(req, res) {
         .then((powers) => {
             powers.map((elem, idx) => {
                 result[idx].powerName = elem.name;
+                result[idx].price = elem.price;
             });
             res.send(result);
         })
@@ -162,10 +163,10 @@ router.put('/', function(req, res) {
 });
 
 // Adds quantity to power in cart.
-router.post('/', function(req, res) {
+router.post('/:powerId', function(req, res) {
 
     // TODO: add powerId validation.
-    let newPowerId = Number(req.body.powerId);
+    let newPowerId = Number(req.params.powerId);
     let newQuantity = Number(req.body.quantity);
 
     if (req.session.passport.user) {
@@ -217,9 +218,9 @@ router.post('/', function(req, res) {
 });
 
 // Removes a power from cart.
-router.delete('/', function(req, res) {
+router.delete('/:powerId', function(req, res) {
 
-    let aPowerId = Number(req.body.powerId);
+    let aPowerId = Number(req.params.powerId);
 
     if (req.session.passport.user) {
         let userId = req.session.passport.user;
