@@ -1,4 +1,12 @@
 <nav class="navbar navbar-static-top">
+    <div ng-show="!user" class="welcome">
+        <a ui-sref="login">Login</a>
+    </div>
+    <div ng-show="user" class="welcome">
+        <span>Welcome, {{ user.email }}!</span>
+        <a ui-sref="accountManagement"><span class="glyphicon glyphicon-cog"></span></a>
+        <a ng-click="logout()" class="logout">Logout</a>
+    </div>
     <div class="container">
         <a class="logo" ui-sref="home"><h1 class="text-center">SUPERmarket</h1></a>
         <ul class="nav navbar-nav">
@@ -35,14 +43,13 @@
 
 
     </div>
-
-            <div ng-show="user" class="welcome">
-             <span class="glyphicon glyphicon-search"></span>
-            <span>Welcome, {{ user.email }}!</span>
+    <!-- <span class="glyphicon glyphicon-search"></span> -->
+    <div class="welcome">
+        <a ui-sref="viewCart">
             <span class="glyphicon glyphicon-shopping-cart"></span>
-            <a ng-show="user" ui-sref="accountManagement" class="account">My Account </a>
-            <a ng-show="user" ng-click="logout()" class="logout">Logout</a>
-        </div>
+            My Cart
+        </a>
+    </div>
 </nav>
 
 <!-- tlee questions: order of buttons reversed from written  because of float right. any way to change? -->

@@ -2,9 +2,29 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: 'Reem Kufi', sans-serif;
     background: #fdfdfd;
+}
+
+a {
+    color: black;
+    cursor: pointer;
+    transition: color 0.2s;
+    &.active {
+      color: darken(#f31214, 10%);
+      text-decoration: none;
+    }
+    &:hover {
+      background: none;
+      color: #f31214;
+      text-decoration: none;
+    }
+    &:focus {
+      background: none;
+      text-decoration: none;
+    }
 }
 
 footer {
