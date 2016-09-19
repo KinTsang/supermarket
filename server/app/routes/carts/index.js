@@ -8,7 +8,7 @@ var PowerOrder = Models.PowerOrder;
 module.exports = router;
 
 router.get('/', function(req, res) {
-
+    console.log(req.session);
     let result = [];
 
     if (req.session.passport.user) {
@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
             if (!order) {
                 res.send([]);
                 return;
-            } 
+            }
             return PowerOrder.findAll({
                 where: {
                     orderId: order.id
@@ -90,7 +90,7 @@ router.put('/', function(req, res) {
     if (req.session.passport.user) {
         // Create or update exiting order for this user.
         // Create or update existing power for this user's order.
-        let userId = req.session.passport.user; 
+        let userId = req.session.passport.user;
         Order.findOne({
             where: {
                 userId: userId,
@@ -205,7 +205,7 @@ router.delete('/', function(req, res) {
             if (!order) {
                 res.status(400).send();
                 return;
-            } 
+            }
             return PowerOrder.findOne({
                 where: {
                     orderId: order.id,
@@ -240,3 +240,14 @@ router.delete('/', function(req, res) {
     }
 
 });
+
+router.delete('/reset', function(req, res){
+
+    var cart = req.session.cart;
+
+    req.session.cart = [];
+    console.log("req.session is now: ", req.session);
+
+    res.send();
+
+})

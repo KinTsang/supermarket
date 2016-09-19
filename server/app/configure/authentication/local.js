@@ -1,6 +1,9 @@
 'use strict';
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+const Model = require('../../../db');
+const Order = Model.Order;
+const PowerOrder = Model.PowerOrder;
 
 module.exports = function (app, db) {
 
@@ -45,10 +48,53 @@ module.exports = function (app, db) {
             req.logIn(user, function (loginErr) {
                 if (loginErr) return next(loginErr);
                 // We respond with a response object that has user with _id and email.
-                res.status(200).send({
-                    user: user.sanitize()
-                });
-            });
+
+                //added logic
+                var userId = user.dataValues.id
+                    //if there are items in cart but not in model...then add the info from cart in model.
+                    if (req.session.cart.length){
+                        Order.findOrCreate({ //this is the same code as the post route for carts
+                            where: {
+                                userId: userId,
+                                status: 'open'
+                            }
+                        })
+                        .spread((order, created) => {
+                            var promiseArr = [];
+                            req.session.cart.forEach(function(ele){
+                                var savingOrder = PowerOrder.findOrCreate({
+                                    where: {
+                                        orderId: order.id,
+                                        powerId: ele.powerId
+                                    }
+                                })
+                                .spread((powerorder, created) => {
+                                    powerorder.quantity += ele.quantity;
+                                    return powerorder.save();
+                                 });
+
+                                promiseArr.push(savingOrder)
+                            })
+
+                            return Promise.all(promiseArr);
+                        })
+                        .then(() => res.send({
+                            user: user.sanitize()
+                        }))
+                        .catch((err) => {
+                            res.status(400).send(err);
+                        });
+                    } else {
+                        res.send("No content in cart");
+                    }
+
+                })
+
+                //added logic end
+                // res.status(200).send({
+                //     user: user.sanitize()
+                // });
+
 
         };
 
