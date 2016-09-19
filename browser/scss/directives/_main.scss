@@ -1,2 +1,12 @@
 @import "fullstack-logo";
 @import "navbar";
+#buttons {
+    float: right;
+    position: relative;
+    left: -50%;
+    text-align: left;
+    ul {
+        position: relative;
+        left: 50%;
+    }
+}

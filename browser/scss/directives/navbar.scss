@@ -1,94 +1,109 @@
 navbar {
-
-  display: block;
-  background: white;
-  border-bottom: 1px solid black;
-  box-shadow: 1px 1px 14px -3px black;
-
-  .container {
-    width: 91%;
-    max-width: 1340px;
-    padding-top: 20px;
-  }
-
-
-  fullstack-logo {
-    margin-top: 5px;
-    margin-right: 20px;
-    width: 40px;
-  }
-
-  a {
-    color: black;
-    font-size: 16px;
-  }
-
-  .nav > li > a {
-    cursor: pointer;
-    transition: color 0.2s;
-    &.active {
-      color: darken(#f31214, 10%);
+    display: block;
+    background: white;
+    border-bottom: 1px solid black;
+    box-shadow: 1px 1px 14px -3px black;
+    .welcome-container {
+        position: relative;
+        .searching {
+            position: absolute;
+            top: 16px;
+            left: 24px;
+        }
+        .account-options {
+            position: absolute;
+            // top: 19px;
+            // left: 104px;
+            top: 19px;
+            left: 24px;
+            ul {
+                list-style: none;
+                .glyphicon {
+                    float: left !important;
+                }
+            }
+        }
     }
-    &:hover {
-      background: none;
-      color: #f31214;
+    h1.text-center {
+        margin: 0;
     }
-    &:focus {
-      background: none;
+    .navbar.navbar-static-top {
+        margin-bottom: 0px;
     }
-  }
-
-  .account {
-    color: darkblue;
-  }
-  .logout {
-    color: red;
-  }
-  .logo {
-    text-decoration: none !important;
-    color: #000000;
-  }
-
-  .icon-button {
-    float: right;
-    background: none;
-    font-size: 20px;
-    margin-top: 10px;
-    margin-right: 10px;
-  }
-
-  .login-button {
-    float: right;
-    border: 1px solid black;
-    margin-top: 10px;
-    background: none;
-    outline: none !important;
-  }
-
-  .welcome {
-    float: right;
-    right: 10px;
-    margin-top: 12px;
-    margin-right: 12px;
-    span {
-      color: black;
-      font-size: 16px;
-      margin-right: 5px;
+    .container {
+        width: 91%;
+        max-width: 1340px;
+        padding-top: 20px;
+    }
+    fullstack-logo {
+        margin-top: 5px;
+        margin-right: 20px;
+        width: 40px;
     }
     a {
-      cursor: pointer;
+        color: black;
+        font-size: 16px;
     }
-  }
-  .dropdown.dropdown-scroll .dropdown-menu {
-    max-height: 200px;
-    width: 60px;
-    //overflow: auto;
-    right: 0px;
-    float: right;
-  }
-  .search-control {
-      padding: 5px 10px;
-      float: right;
-      right: 0px;
-  }
+    .nav > li > a {
+        cursor: pointer;
+        transition: color 0.2s;
+        &.active {
+            color: darken(#f31214, 10%);
+        }
+        &:hover {
+            background: none;
+            color: #f31214;
+        }
+        &:focus {
+            background: none;
+        }
+    }
+    .account {
+        color: darkblue;
+    }
+    .logout {
+        color: red;
+    }
+    .logo {
+        text-decoration: none !important;
+        color: #000000;
+    }
+    .icon-button {
+        float: right;
+        background: none;
+        font-size: 20px;
+    }
+    .login-button {
+        float: right;
+        border: 1px solid black;
+        margin-top: 10px;
+        background: none;
+        outline: none !important;
+    }
+    .welcome {
+        float: right;
+        right: 10px;
+        margin-top: 5px;
+        margin-right: 5px;
+        span {
+            color: black;
+            font-size: 16px;
+            margin-right: 5px;
+        }
+        a {
+            cursor: pointer;
+        }
+    }
+    .dropdown.dropdown-scroll .dropdown-menu {
+        max-height: 200px;
+        width: 60px;
+        //overflow: auto;
+        right: 0px;
+        float: right;
+    }
+    .search-control {
+        padding: 5px 10px;
+        float: right;
+        right: 0px;
+    }
 }

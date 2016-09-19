@@ -1,57 +1,44 @@
 <nav class="navbar navbar-static-top">
-    <div ng-show="!user" class="welcome">
-        <a ui-sref="login">Login</a>
-    </div>
-    <div ng-show="user" class="welcome">
-        <span>Welcome, {{ user.email }}!</span>
-        <a ui-sref="accountManagement"><span class="glyphicon glyphicon-cog"></span></a>
-        <a ng-click="logout()" class="logout">Logout</a>
-    </div>
-    <div class="container">
-        <a class="logo" ui-sref="home"><h1 class="text-center">SUPERmarket</h1></a>
-        <ul class="nav navbar-nav">
-            <li>
-                <a ui-sref-active="active" ui-sref="powers({categoryId: 'all'})">All Powers</a>
-            </li>
-            <li ng-repeat="category in categories">
-                <a ui-sref-active="active" ui-sref="powers({categoryId: category.id})">{{category.name}} Powers</a>
-            </li>
-<!--             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-            </li> -->
-        </ul>
-<!--         <button ng-show="!user" ui-sref="login" class="btn login-button"><span class="glyphicon glyphicon-log-in"></span> Login</button>
-        <button class="btn icon-button">
-          <span class="glyphicon glyphicon-shopping-cart"></span>
-        </button> -->
-<!--         <div class="dropdown dropdown-scroll">
-            <button class="btn icon-button dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li>
-                    <div class="input-group input-group-sm search-control">
+    <div class="welcome col-md-12">
+<!--         <div ng-show="!user">
+            <a ui-sref="login">Login</a>
+        </div> -->
+        <div class="welcome welcome-container">
+            <div>>
+                <a ng-show="!user" ui-sref="login">Login</a>
+                <span ng-show="user">Welcome, {{ user.email }}!</span>
+                <a ng-show="user" ng-click="toggleAccountOptions()"><span class="glyphicon glyphicon-cog"></span></a>
+                <a ui-sref="viewCart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                <a ng-click="toggleSearching()"><span class="glyphicon glyphicon-search"></span></a>
+            </div>
+            <div class="welcome account-options" ng-show="accountOptions">
+                <ul>
+                    <li><a ui-sref="accountManagement">Account Settings<span class="glyphicon glyphicon-user pull-right"></span></a></li>
+                    <li><a ng-click="logout()">Logout<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                </ul>
+            </div>
+            <div class="welcome searching" ng-show="searching" style="width: 250px;">
+                <div class="input-group input-group-sm search-control">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-search"></span>
                     </span>
-                    <input type="text" class="form-control" placeholder="Query" ng-model="query">
+                    <input type="text" class="form-control" placeholder="Power Finder" ng-model="query">
                     </input>
+                </div>
             </div>
-        </li>
-            </ul>
-        </div> -->
-
-
+        </div>
     </div>
-    <!-- <span class="glyphicon glyphicon-search"></span> -->
-    <div class="welcome">
-        <a ui-sref="viewCart">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-            My Cart
-        </a>
+    <div class="container">
+        <a class="logo" ui-sref="home"><h1 class="text-center">SUPERmarket</h1></a>
+        <div id="buttons">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a ui-sref-active="active" ui-sref="powers({categoryId: 'all'})">All Powers</a>
+                </li>
+                <li ng-repeat="category in categories">
+                    <a ui-sref-active="active" ui-sref="powers({categoryId: category.id})">{{category.name}} Powers</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
-
-<!-- tlee questions: order of buttons reversed from written  because of float right. any way to change? -->
-
-
