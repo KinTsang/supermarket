@@ -5,10 +5,9 @@ module.exports = router;
 router.use('/carts', require('./carts'));
 router.use('/members', require('./members'));
 router.use('/categories', require('./categories'));
-
-//route to query powers
 router.use('/powers', require('./powers'));
 router.use('/users', require('./users'));
+router.use('/reviews', require('./reviews'));
 
 // Make sure this is after all of
 // the registered routes!
