@@ -2,6 +2,7 @@
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 
+router.use('/orders', require('./orders'));
 router.use('/carts', require('./carts'));
 router.use('/members', require('./members'));
 router.use('/categories', require('./categories'));

@@ -1,0 +1,40 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product Id</th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="order in orderDetail">
+    <tr>
+      <th scope="row">{{order.powerId}}</th>
+      <td>{{order.powerName}}</td>
+      <td>{{order.quantity}}</td>
+      <td>${{order.price}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Order Id</th>
+      <th>Updated At</th>
+      <th>Status</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="order in priorOrders">
+    <tr>
+      <th scope="row" ng-click="getOrderDetail(order.id)">{{order.id}}</th>
+      <td>{{order.updatedAt | date: "MM/dd/yyyy"}}</td>
+      <td>{{order.status}}</td>
+      <td>${{order.priceAtPurchase}}</td>
+    </tr>
+      <!-- <order-detail orderDetail="orderDetail"></order-detail> -->
+  </tbody>
+
+</table>
+
