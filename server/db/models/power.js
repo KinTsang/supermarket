@@ -21,7 +21,8 @@ module.exports = db.define('power', {
         type: Sequelize.INTEGER
     },
     picUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: 'https://unsplash.it/200/300/?random'
     }
 }, {
     instanceMethods: {
