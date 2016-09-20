@@ -1,7 +1,6 @@
 
 <h2> Shipping Address </h2>
-  <form name="addressForm" ng-submit="submitShipping(user.id, form)" novalidate>
-  <pre>{{addressForm.street | json}}</pre>
+  <form name="addressForm" ng-submit="submitShipping(form)" novalidate>
     <div class="form-group">
       <label>First Name</label>
       <input type="text" class="form-control" ng-model="form.firstName" name='firstName' ng-value="user.firstName" required>
@@ -32,7 +31,7 @@
       <input type="text" class="form-control" ng-model="form.zipcode" name='zipcode' ng-value="user.zipcode" required>
     </div>
 
-    <button type="submit" class="btn btn-block btn-primary" ng-disabled="addressForm.$invalid">
+    <button type="submit" class="btn btn-block btn-primary" ng-disabled="addressForm.$invalid && !(user.firstName && user.lastName && user.street && user.city && user.state && user.zipcode)">
     Continue
     </button>
   </form>

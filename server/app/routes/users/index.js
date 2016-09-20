@@ -30,12 +30,29 @@ router.post('/', function (req, res, next) {
 });
 
 //edit user
-router.put('/:userId', function (req, res, next) {
-  User.findById(req.params.userId)
+router.put('/', function (req, res, next) {
+  if (!req.params.userId) {
+    req.session.address = req.body;
+    console.log(req.session);
+    res.send(req.body);
+   } else {
+     User.findById(req.session.passport.user)
     .then(foundUser => foundUser.update(req.body))
     .then(updatedUser => res.send(updatedUser))
     .catch(next);
+   }
 })
 
 //router.put
 module.exports = router;
+
+
+// router.put('/editUser', function (req, res, next) {
+//    if (!req.session.passport.user) {
+//     req.session.shipping = req.body;
+//     return;
+//    }
+//    else {
+
+//    }
+// });

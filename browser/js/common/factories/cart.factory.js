@@ -20,5 +20,9 @@ app.factory('CartFactory', function($http) {
             .then(formatData);
     };
 
+    CartFactory.completeCheckout = function (obj) {
+        return $http.put('/api/carts/checkout')
+            .then(formatData);
+    }
     return CartFactory;
 });

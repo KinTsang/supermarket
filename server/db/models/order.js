@@ -14,6 +14,9 @@ module.exports = db.define('order', {
     }
 }, {
     instanceMethods: {
+        // getPrice: function () {
+        //     this.
+        // }
     },
     classMethods: {
     },

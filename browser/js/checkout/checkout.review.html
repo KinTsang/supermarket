@@ -14,6 +14,28 @@
 
   <div class="orderSummary col-xs-4">
     <h3> Order Summary </h3>
-  </div>
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Power Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in items">
+          <td>{{item.powerName}}</td>
+          <td>{{item.quantity}}</td>
+          <td>${{item.price}}</td>
+        </tr>
+        <td> Total Price: </td>
+        <td> </td>
+        <td> PUT TOTAL PRICE HERE</td>
+      </tbody>
+    </table>
+
+    <button type="button" class="btn btn-warning" ng-click="completeCheckout()">Complete Checkout</button>
 
 </section>

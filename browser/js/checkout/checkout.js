@@ -22,28 +22,44 @@
       url: '/checkout/shipping',
       templateUrl: 'js/checkout/checkout.shipping.html',
       resolve: {
-        user: (AuthService) => AuthService.getLoggedInUser(false)
+        user: (AuthService) => AuthService.getLoggedInUser(false),
+        items: (CartFactory) => CartFactory.fetchAll()
       },
       controller: 'CheckoutCtrl'
     })
     .state('review', {
-      url: '/checkout/:id/review',
+      url: '/checkout/review',
       templateUrl: 'js/checkout/checkout.review.html',
       resolve: {
-        user: (UserFactory, $stateParams) => UserFactory.fetchById($stateParams.id)
+        items: (CartFactory) => CartFactory.fetchAll()
       },
       controller: 'CheckoutCtrl'
     })
   });
 
-app.controller('CheckoutCtrl', function ($scope, user, UserFactory, $log, $state) {
+app.controller('CheckoutCtrl', function ($scope, user, UserFactory, $log, $state, items, CartFactory) {
+  console.log(user);
   $scope.user = user;
+  $scope.items = items || null;
 
-
-  $scope.submitShipping = function (id, form) {
-    UserFactory.editUser(id, form)
-      .then(() => $state.go('review', {id: id}))
+  $scope.submitShipping = function (form) {
+    if (user) {
+      UserFactory.editUser(form)
+      .then((updatedUser) => {
+        $scope.user = updatedUser;
+        $state.go('review');
+      })
       .catch($log.error);
+    } else {
+      $scope.user = form;
+      $state.go('review');
+    }
+  }
+
+  $scope.completeCheckout = function () {
+    CartFactory.completeCheckout()
+      .then(() => $state.go('home'))
+      .catch($log.error());
   }
 });
 
