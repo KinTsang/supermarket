@@ -33,6 +33,9 @@ module.exports = db.define('user', {
     },
     google_id: {
         type: Sequelize.STRING
+    },
+    isAdmin: {
+        type: Sequelize.BOOLEAN
     }
 }, {
     instanceMethods: {
