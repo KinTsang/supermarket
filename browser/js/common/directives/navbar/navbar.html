@@ -1,6 +1,6 @@
 <nav class="navbar navbar-static-top">
     <div class="welcome col-md-12">
-<!--         <div ng-show="!user">
+        <!--         <div ng-show="!user">
             <a ui-sref="login">Login</a>
         </div> -->
         <div class="welcome welcome-container">
@@ -10,6 +10,7 @@
                 <a ng-show="user" ng-click="toggleAccountOptions()"><span class="glyphicon glyphicon-cog"></span></a>
                 <a ui-sref="viewCart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
                 <a ng-click="toggleSearching()"><span class="glyphicon glyphicon-search"></span></a>
+                <a ng-click="toggleAdminOptions()" ng-show="true"><span class="glyphicon glyphicon-lock"></span></a>
             </div>
             <div class="welcome account-options" ng-show="accountOptions">
                 <ul>
@@ -17,7 +18,7 @@
                     <li><a ng-click="logout()">Logout<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                 </ul>
             </div>
-            <div class="welcome searching" ng-show="searching" style="width: 250px;">
+            <div class="welcome searching" ng-show="searching" ng-class="!user ? 'logged-out' : ''">
                 <div class="input-group input-group-sm search-control">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-search"></span>
@@ -25,6 +26,12 @@
                     <input type="text" class="form-control" placeholder="Power Finder" ng-model="query">
                     </input>
                 </div>
+            </div>
+            <div class="welcome admin-options" ng-show="adminOptions">
+                <ul>
+                    <li><a ui-sref="accountManagement">Edit Categories</a></li>
+                    <li><a ui-sref="accountManagement">Edit Powers</a></li>
+                </ul>
             </div>
         </div>
     </div>

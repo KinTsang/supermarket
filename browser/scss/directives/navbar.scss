@@ -9,6 +9,10 @@ navbar {
             position: absolute;
             top: 16px;
             left: 24px;
+            width: 250px;
+        }
+        .searching.logged-out {
+            left: -125px;
         }
         .account-options {
             position: absolute;

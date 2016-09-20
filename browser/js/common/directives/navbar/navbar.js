@@ -50,6 +50,7 @@ app.directive('navbar', function($rootScope, CategoryFactory, AuthService, AUTH_
             };
 
             scope.logout = function() {
+                scope.accountOptions = false;
                 AuthService.logout().then(function() {
                     $state.go('home');
                 });
