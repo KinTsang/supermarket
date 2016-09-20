@@ -16,16 +16,31 @@ navbar {
         }
         .account-options {
             position: absolute;
-            // top: 19px;
-            // left: 104px;
             top: 19px;
-            left: 24px;
+            left: 125px;
             ul {
                 list-style: none;
                 .glyphicon {
                     float: left !important;
                 }
             }
+        }
+        .account-options.logged-out {
+            left: 24px;
+        }
+        .admin-options {
+            position: absolute;
+            top: 19px;
+            left: 125px;
+            ul {
+                list-style: none;
+                .glyphicon {
+                    float: left !important;
+                }
+            }
+        }
+        .admin-options.logged-out {
+            left: 24px;
         }
     }
     h1.text-center {

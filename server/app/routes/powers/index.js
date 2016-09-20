@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
             model: Category
         }
     };
-    if (req.query.categoryId !== 'all'){
+    if (req.query.categoryId !== 'all' && req.query.categoryId){
         searchParams.include.where = { id: req.query.categoryId };
     }
     Power.findAll(searchParams)

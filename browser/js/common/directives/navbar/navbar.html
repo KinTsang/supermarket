@@ -10,7 +10,7 @@
                 <a ng-show="user" ng-click="toggleAccountOptions()"><span class="glyphicon glyphicon-cog"></span></a>
                 <a ui-sref="viewCart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
                 <a ng-click="toggleSearching()"><span class="glyphicon glyphicon-search"></span></a>
-                <a ng-click="toggleAdminOptions()" ng-show="true"><span class="glyphicon glyphicon-lock"></span></a>
+                <a ng-click="toggleAdminOptions()" ng-show="user.isAdmin"><span class="glyphicon glyphicon-lock"></span></a>
             </div>
             <div class="welcome account-options" ng-show="accountOptions">
                 <ul>
@@ -27,10 +27,10 @@
                     </input>
                 </div>
             </div>
-            <div class="welcome admin-options" ng-show="adminOptions">
+            <div class="welcome account-options" ng-show="adminOptions">
                 <ul>
-                    <li><a ui-sref="accountManagement">Edit Categories</a></li>
-                    <li><a ui-sref="accountManagement">Edit Powers</a></li>
+                    <li><a ui-sref="categoryadmin">Edit Categories</a></li>
+                    <li><a ui-sref="powerList">Edit Powers</a></li>
                 </ul>
             </div>
         </div>
