@@ -1,0 +1,42 @@
+
+<table class="table">
+  <thead>
+    <tr class="row">
+      <th>Order Id</th>
+      <th>Updated At</th>
+      <th>Status</th>
+      <th>Total Price</th>
+      <th>Order Detail</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="order in priorOrders">
+    <tr class="row">
+      <th class="col-md-2">{{order.id}}</th>
+      <td class="col-md-3">{{order.updatedAt | date: "MM/dd/yyyy"}}</td>
+      <td class="col-md-2">{{order.status}}</td>
+      <td class="col-md-2">${{order.priceAtPurchase}}</td>
+      <td class="col-md-2"><button class="btn btn-primary" ng-click="getOrderDetail(order.id)">View</button><td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table" ng-if="showOrderDetail">
+
+  <thead>
+    <tr>
+      <th>Product Id</th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="order in orderDetail">
+    <tr>
+      <th scope="row">{{order.id}}</th>
+      <td>{{order.name}}</td>
+      <td>{{order.orders[0].power_order.quantity}}</td>
+      <td>${{order.orders[0].power_order.priceAtPurchase}}</td>
+  <button class="btn btn-secondary" ng-click="toggleShowOrderDetail()">Collapse Order Detail</button>
+    </tr>
+  </tbody>
+</table>
