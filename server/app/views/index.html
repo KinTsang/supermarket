@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <base href="/" />
     <title>SUPERmarket</title>
@@ -21,11 +22,11 @@
     <!-- <script type="text/javascript" src="https://js.stripe.com/v2/" defer></script> -->
     <script src="/main.js"></script>
 </head>
+
 <body ng-app="FullstackGeneratedApp">
     <navbar></navbar>
-<!--     <carousel></carousel> -->
+    <!--     <carousel></carousel> -->
     <div class="row carousel-holder" ng-if="'home' | isState">
-
         <div class="col-md-12">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -52,13 +53,13 @@
                 </a>
             </div>
         </div>
-
     </div>
     <div class="container-fluid">
         <div id="main" ui-view></div>
     </div>
     <footer class="text-center" style="float: bottom-middle">
-    <p> &copy; 2016 SUPERmarket Co.| All Rights Reserved </p>
+        <p> &copy; 2016 SUPERmarket Co.| All Rights Reserved </p>
     </footer>
 </body>
+
 </html>

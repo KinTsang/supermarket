@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
             model: Category
         }
     };
-    if (req.query.categoryId !== 'all'){
+    if (req.query.categoryId !== 'all' && req.query.categoryId){
         searchParams.include.where = { id: req.query.categoryId };
     }
     Power.findAll(searchParams)
@@ -40,7 +40,7 @@ router.get('/:powerId', function(req, res, next) {
 //Create a new power
 router.post('/create', function(req, res, next) {
     Power.create(req.body)
-        .then(createdPower => createdPower.setCategory(req.body.categoryId))
+        .then(createdPower => createdPower.addCategory(req.body.categoryId))
         .then(createdPowerWithAssociation => res.status(200).send(createdPowerWithAssociation))
         .catch(next);
 })

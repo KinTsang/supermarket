@@ -6,7 +6,7 @@ app.config(function($stateProvider) {
     $stateProvider.state('powerList', {
         url: '/admin/powers/',
         templateUrl: 'js/power/power.list.html',
-        controller: 'PowerCtrl',
+        controller: 'PowerListCtrl',
         resolve: {
             powerInfo: PowerFactory => PowerFactory.fetchAll(),
             categoryInfo: CategoryFactory => CategoryFactory.fetchAll()
@@ -17,9 +17,8 @@ app.config(function($stateProvider) {
     $stateProvider.state('createPower', {
         url: '/powers/create',
         templateUrl: 'js/power/power.add.html',
-        controller: 'PowerCtrl',
+        controller: 'CreatePowerCtrl',
         resolve: {
-            powerInfo: () => null, //this resolve exists to meet controller injection requirements
             categoryInfo: CategoryFactory => CategoryFactory.fetchAll()
         }
     });
@@ -45,6 +44,40 @@ app.config(function($stateProvider) {
             categoryInfo: CategoryFactory => CategoryFactory.fetchAll()
         }
     });
+});
+
+app.controller('PowerListCtrl', function($scope, $state, powerInfo, categoryInfo, PowerFactory) {
+    $scope.powerInfo = powerInfo;
+
+    $scope.updatePosting = function(updateInfo) {
+        PowerFactory.update(updateInfo)
+            .then(updatedPower => $state.go('powerList'))
+    }
+
+    $scope.createNewPower = function(newPower) {
+        PowerFactory.create(newPower)
+            .then(function(createdPower) {
+                $scope.newPower = {};
+                $scope.created = true;
+
+            })
+    }
+});
+
+app.controller('CreatePowerCtrl', function($scope, $state, categoryInfo, PowerFactory){
+
+    $scope.created = false;
+
+    $scope.categoryInfo = categoryInfo;
+
+    $scope.createNewPower = function(newPower) {
+        PowerFactory.create(newPower)
+            .then(function(createdPower) {
+                $scope.newPower = {};
+                $scope.created = true;
+                $scope.newlyCreatedPower = createdPower
+            })
+    }
 })
 
 app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, PowerFactory, CartFactory, ReviewFactory) {
@@ -62,15 +95,6 @@ app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, Po
             .then(updatedPower => $state.go('powerList'))
     }
 
-    $scope.createNewPower = function(newPower) {
-        PowerFactory.create(newPower)
-            .then(function(createdPower) {
-                $scope.newPower = {};
-                $scope.created = true;
-
-            })
-    }
-
     $scope.addToCart = function(itemInfo) {
         CartFactory.addToCart(powerInfo.id, itemInfo.quantity)
             .then((addedCart) => addedCart.data)
@@ -86,7 +110,7 @@ app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, Po
     $scope.reviewSubmitted = false
     $scope.showReviewForm = false;
 
-    $scope.showFormToggle = function(){
+    $scope.showFormToggle = function() {
         $scope.showReviewForm = !$scope.showReviewForm;
     }
 
@@ -94,11 +118,11 @@ app.controller('PowerCtrl', function($scope, $state, powerInfo, categoryInfo, Po
         ReviewFactory.createReview(newReview)
             .then((createdReview) => {
 
-              $scope.newReview = {};
-              $scope.reviewSubmitted = true;
-              $scope.powerInfo.reviews.push(createdReview.data)
-              $scope.apply();
-              return createdReview
+                $scope.newReview = {};
+                $scope.reviewSubmitted = true;
+                $scope.powerInfo.reviews.push(createdReview.data)
+                $scope.apply();
+                return createdReview
             })
     }
 

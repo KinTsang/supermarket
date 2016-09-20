@@ -35,12 +35,20 @@ app.directive('navbar', function($rootScope, CategoryFactory, AuthService, AUTH_
 
             scope.toggleSearching = function() {
                 scope.accountOptions = false;
+                scope.adminOptions = false;
                 scope.searching = !scope.searching;
             };
 
             scope.toggleAccountOptions = function() {
                 scope.searching = false;
+                scope.adminOptions = false;
                 scope.accountOptions = !scope.accountOptions;
+            };
+
+            scope.toggleAdminOptions = function() {
+                scope.searching = false;
+                scope.accountOptions = false;
+                scope.adminOptions = !scope.adminOptions;
             };
 
             scope.user = null;
@@ -50,6 +58,7 @@ app.directive('navbar', function($rootScope, CategoryFactory, AuthService, AUTH_
             };
 
             scope.logout = function() {
+                scope.accountOptions = false;
                 AuthService.logout().then(function() {
                     $state.go('home');
                 });
