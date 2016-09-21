@@ -3,6 +3,10 @@
       padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
   }
 
+  img {
+     border: 1px solid black;
+  }
+
   img.resize{
      width:400px;
      height:300px;
