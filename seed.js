@@ -34,22 +34,24 @@ var seedUsers = function () {
         {
             email: 'testing@fsa.com',
             password: 'password',
-<<<<<<< HEAD
-=======
+            firstName: 'Test First Name',
+            lastName: 'Test Last Name',
+            street: '1111 Test St.',
+            city: 'Test City',
+            state: 'TS',
+            zipcode: 77777,
             isAdmin: false
->>>>>>> 47ddfeae725d4185e978271e5b17a31aeb81fd70
         },
         {
             email: 'obama@gmail.com',
             password: 'potus',
-<<<<<<< HEAD
+            firstName: 'Obama',
+            lastName: 'Barack',
             street: '1600 Pennsylvania Ave NW',
             city: 'Washington',
             state: 'DC',
-            zipcode: 20500
-=======
+            zipcode: 20500,
             isAdmin: true
->>>>>>> 47ddfeae725d4185e978271e5b17a31aeb81fd70
         }
     ];
 
@@ -152,19 +154,19 @@ var seedPowers = function () {
 var seedCategories = function () {
     var categories = [
         {
-            name: 'Physical'
+            name: 'Corpus'
         },
         {
-            name: 'Mental'
+            name: 'Animus'
         },
         {
-            name: 'Physics/Reality Manipulation'
+            name: 'Mundus'
         },
         {
-            name: 'Transportation/Travel'
+            name: 'Ambulus'
         },
         {
-            name: 'Divine'
+            name: 'Divinus'
         }
     ];
     var creatingCategories = categories.map(function(cateObj) {

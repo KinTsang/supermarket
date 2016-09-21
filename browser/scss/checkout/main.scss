@@ -1,13 +1,29 @@
-#checkoutUser {
- .shippingAddress {
-   border: 1px solid black;
- }
+#checkoutShippingAddressForm {
+    margin: auto;
+    max-width: 400px; 
+}
 
- .paymentMethod {
-   border: 1px solid red;
- }
+#checkoutReviewAddress {
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    border: 1px solid black;
+}
 
-  .orderSummary {
+#checkoutReviewPayment {
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    border: 1px solid red;
+}
+
+#checkoutReviewCart {
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
     border: 1px solid blue;
-  }
+
+    table {
+        margin-bottom: 10px;
+    }
 }

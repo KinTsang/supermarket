@@ -5,7 +5,7 @@
 
 body {
     font-family: 'Reem Kufi', sans-serif;
-    background: #fdfdfd;
+    background: white;
 }
 
 a {
@@ -24,6 +24,10 @@ a {
     &:focus {
       background: none;
       text-decoration: none;
+    }
+
+    .notrans {
+      transition: none;
     }
 }
 
