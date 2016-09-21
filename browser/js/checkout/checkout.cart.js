@@ -3,10 +3,10 @@
 app.config(function($stateProvider) {
 
     //state to for admin to manage all powers
-    $stateProvider.state('viewCart', {
-        url: '/cart/',
-        templateUrl: 'js/cart/cart.html',
-        controller: 'ViewCartCtrl',
+    $stateProvider.state('checkoutcart', {
+        url: '/checkout/cart',
+        templateUrl: 'js/checkout/checkout.cart.html',
+        controller: 'CheckoutCartCtrl',
         resolve: {
             cartInfo: CartFactory => CartFactory.fetchAll()
         }
@@ -14,7 +14,7 @@ app.config(function($stateProvider) {
 
 });
 
-app.controller('ViewCartCtrl', function($scope, cartInfo, CartFactory) {
+app.controller('CheckoutCartCtrl', function($scope, CartFactory, cartInfo) {
     $scope.cartInfo = cartInfo;
     $scope.removeFromCart = function(powerId) {
         CartFactory.removeFromCart(powerId)

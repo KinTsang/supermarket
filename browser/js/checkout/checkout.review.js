@@ -1,0 +1,20 @@
+'use strict';
+
+app.config(function ($stateProvider) {
+    $stateProvider.state('checkoutreview', {
+        url: '/checkout/review',
+        templateUrl: 'js/checkout/checkout.review.html',
+        params: {
+            addrInfo: undefined
+        },
+        resolve: {
+            cartInfo: (CartFactory) => CartFactory.fetchAll()
+        },
+        controller: 'CheckoutReviewCtrl'
+    });
+});
+
+app.controller('CheckoutReviewCtrl', function ($scope, $log, $state, cartInfo)  {
+    $scope.cartInfo = cartInfo;
+    $scope.addrInfo = $state.params.addrInfo;
+});

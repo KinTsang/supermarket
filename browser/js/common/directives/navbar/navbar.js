@@ -1,21 +1,4 @@
-console.log("hello world");
-// app.controller('NavbarCtrl', function($scope) {
-//     $scope.searching = false;
-//     $scope.accountOptions = false;
-
-//     $scope.toggleSearching = function() {
-//         $scope.accountOptions = false;
-//         console.log('switching searching');
-//         $scope.searching = !$scope.searching;
-//     };
-
-//     $scope.toggleAccountOptions = function() {
-//         $scope.searching = false;
-//         console.log('switching accountOptions');
-//         $scope.accountOptions = !$scope.accountOptions;
-//     };
-
-// });
+'use strict';
 
 app.directive('navbar', function($rootScope, CategoryFactory, AuthService, AUTH_EVENTS, $state) {
 

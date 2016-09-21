@@ -7,6 +7,32 @@ var Power = Models.Power;
 var PowerOrder = Models.PowerOrder;
 module.exports = router;
 
+router.get('/getTotal', function (req, res, next){
+    Order.findById(1)
+    .then(order => order.getPrice())
+    .then(price => res.json(price))
+    //.then(order => res.send(order))
+})
+
+// router.get('/getTotal', function (req, res, next){
+
+//     if (req.session.passport.user) {
+//         let userId = req.session.passport.user;
+//         Order.findOne({
+//             where: {
+//                 userId: userId,
+//                 status: 'open'
+//             }
+//         })
+//         .then(order => {
+//             order.total = order.getPrice();
+//             order.save();
+//             console.log(order.total);
+//             res.send(order);
+//         })
+//     }
+// })
+
 router.get('/', function(req, res) {
     console.log(req.session);
     let result = [];
@@ -272,6 +298,8 @@ router.delete('/reset', function(req, res){
 
 
 router.put('/checkout', function (req, res, next) {
+    let addrInfo = req.body.addrInfo;
+
     if (req.session.passport.user) {
         let userId = req.session.passport.user;
         Order.findOne({
@@ -280,14 +308,29 @@ router.put('/checkout', function (req, res, next) {
                 status: 'open'
             }
         })
-        .then(order => {
-            order.status = 'closed';
-            return order.save()
+        .then((order) => {
+            return [order, order.getTotalPrice()];
         })
-        .then(order => res.send(order))
+        .spread((order, totalPrice) => {
+            order.totalSellPrice = totalPrice;
+            order.status = 'closed';
+            for (let k in addrInfo) {
+                if (addrInfo.hasOwnProperty(k)) {
+                    order[k] = addrInfo[k];
+                }
+            }
+            return order.save();
+        })
+        .then((order) => res.send(order))
         .catch(next);
+    } else {
+        // TODO
+        res.send();
     }
+
 });
+
+
 // router.post('/checkout', function (req, res, next) {
 
 //     if (req.session.part)
