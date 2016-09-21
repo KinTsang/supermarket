@@ -1,40 +1,44 @@
 <section id="checkoutUser">
+<div class="text-center">
+    <div id="checkoutReviewAddress" class="col-xs-4">
+      <h3>Shipping Address</h3>
+      <br>
+      <p>{{addrInfo.firstName}} {{addrInfo.lastName}}</p>
+      <p>{{addrInfo.street}}</p>
+      <p>{{addrInfo.city}}, {{addrInfo.state}} {{addrInfo.zipcode}}</p>
+      <br>
+      <a class="notrans" ui-sref="checkoutshipping({addrInfo: addrInfo})"><button type="button" class="btn btn-warning text-center">Change Address</button></a>
+    </div>
 
-  <div id="checkoutReviewAddress" class='col-xs-4'>
-    <h3>Shipping Address</h3>
-    <p>{{addrInfo.firstName}} {{addrInfo.lastName}}</p>
-    <p>{{addrInfo.street}}</p>
-    <p>{{addrInfo.city}}, {{addrInfo.state}} {{addrInfo.zipcode}}</p>
-    <br>
-    <a class="notrans" ui-sref="checkoutshipping({addrInfo: addrInfo})"><button type="button" class="btn btn-warning text-center">Change Address</button></a>
+    <div id="checkoutReviewPayment" class="col-xs-4">
+      <h3> Payment Method </h3>
+      <br>
+    </div>
+
+
+    <div id="checkoutReviewCart" class="col-xs-4">
+      <h3> Order Summary </h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Power Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in cartInfo">
+            <td>{{item.powerName}}</td>
+            <td>{{item.quantity}}</td>
+            <td>${{item.price}}</td>
+          </tr>
+          <td> Total Price: </td>
+          <td> </td>
+          <td> {{totalPrice | currency}}</td>
+        </tbody>
+      </table>
+      <br>
+      <button type="button" class="btn btn-success text-center" ng-click="completeCheckout()">Complete Checkout</button>
+    </div>
   </div>
-
-  <div id="checkoutReviewPayment" class="col-xs-4">
-    <h3> Payment Method </h3>
-  </div>
-
-  <div id="checkoutReviewCart" class="col-xs-4">
-    <h3> Order Summary </h3>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Power Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in cartInfo">
-          <td>{{item.powerName}}</td>
-          <td>{{item.quantity}}</td>
-          <td>${{item.price}}</td>
-        </tr>
-        <td> Total Price: </td>
-        <td> </td>
-        <td> {{total | currency}}</td>
-      </tbody>
-    </table>
-    <button type="button" class="btn btn-success text-center" ng-click="completeCheckout()">Complete Checkout</button>
-  </div>
-
 </section>

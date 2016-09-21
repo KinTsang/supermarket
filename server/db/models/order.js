@@ -4,17 +4,35 @@ var Sequelize = require('sequelize');
 var db = require('../_db');
 
 module.exports = db.define('order', {
-    priceTotalAtPurchase: {
-        type: Sequelize.FLOAT,
-    },
     status: {
         type: Sequelize.ENUM,
         values: ['open', 'closed'],
         defaultValue: 'open'
+    },
+    totalSellPrice: {
+        type: Sequelize.FLOAT
+    },
+    firstName: {
+        type: Sequelize.STRING
+    },
+    lastName: {
+        type: Sequelize.STRING
+    },
+    street: {
+        type: Sequelize.STRING
+    },
+    city: {
+        type: Sequelize.STRING
+    },
+    state: {
+        type: Sequelize.STRING
+    },
+    zipcode: {
+        type: Sequelize.INTEGER
     }
 }, {
     instanceMethods: {
-         getPrice: function () {
+         getTotalPrice: function () {
             let prices = [];
              return this.getPowers()
              .then(powers => {

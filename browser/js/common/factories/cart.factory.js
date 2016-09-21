@@ -20,14 +20,15 @@ app.factory('CartFactory', function($http) {
             .then(formatData);
     };
 
-    CartFactory.completeCheckout = function (obj) {
-        return $http.put('/api/carts/checkout')
+    CartFactory.completeCheckout = function(addrInfo) {
+        return $http.put('/api/carts/checkout', addrInfo)
             .then(formatData);
     }
 
-    CartFactory.getTotal = function () {
+    CartFactory.getTotal = function() {
         return $http.get('/api/carts/getTotal')
             .then(formatData);
     }
+    
     return CartFactory;
 });
