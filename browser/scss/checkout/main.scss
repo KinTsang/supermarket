@@ -1,29 +1,36 @@
+#checkoutCart {
+    margin: auto;
+    max-width: 700px;
+}
+
 #checkoutShippingAddressForm {
     margin: auto;
     max-width: 400px; 
 }
 
 #checkoutReviewAddress {
-    padding: 20px;
+    padding: 40px;
     padding-top: 10px;
     padding-bottom: 30px;
-    border: 1px solid black;
+    border: 2px solid black;
+    margin: 20px;
+    width: 30%;
 }
 
 #checkoutReviewPayment {
-    padding: 20px;
+    padding: 40px;
     padding-top: 10px;
     padding-bottom: 30px;
-    border: 1px solid red;
+    border: 2px solid black;
+    margin: 20px;
+    width: 30%;
 }
 
 #checkoutReviewCart {
-    padding: 20px;
+    padding: 40px;
     padding-top: 10px;
     padding-bottom: 30px;
-    border: 1px solid blue;
-
-    table {
-        margin-bottom: 10px;
-    }
+    border: 2px solid black;
+    margin: 20px;
+    width: 30%;
 }

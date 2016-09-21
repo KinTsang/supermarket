@@ -14,7 +14,16 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('CheckoutReviewCtrl', function ($scope, $log, $state, cartInfo)  {
+app.controller('CheckoutReviewCtrl', function ($scope, $log, $state, CartFactory, cartInfo)  {
     $scope.cartInfo = cartInfo;
     $scope.addrInfo = $state.params.addrInfo;
+    $scope.totalPrice = cartInfo.reduce((prev, elem) => prev + elem.price, 0);
+
+    $scope.completeCheckout = function() {
+        CartFactory.completeCheckout({
+            addrInfo: $scope.addrInfo
+        })
+        .then(() => $state.go('home'))
+        .catch($log.error());
+    };
 });

@@ -1,5 +1,6 @@
-<div class="cart">
+<div id="checkoutCart" class="text-center">
   <table class="table">
+    <h3>My Cart</h3>
     <thead>
       <tr>
         <th>Power Name</th>
@@ -15,8 +16,7 @@
       <td><a href="#" ng-click="removeFromCart(item.powerId)"><span class="glyphicon glyphicon-trash"></span>Delete</a></td>
     </tr>
   </table>
-  <div class="text-right">
-    <a href="#"><button type="button" class="btn btn-warning" ng-click="clearCart()">Clear Cart</button></a>
-    <a ui-sref="checkoutshipping"><button type="button" class="btn btn-success" ng-click="checkoutCart()">Check Out</button></a>
-  </div>
+  <br><br>
+  <a href="#"><button type="button" class="btn btn-warning" ng-click="clearCart()">Clear Cart</button></a>
+  <a ui-sref="checkoutshipping"><button type="button" class="btn btn-success" ng-click="checkoutCart()">Check Out</button></a>
 </div>

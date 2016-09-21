@@ -29,5 +29,5 @@
     <label>Zip Code</label>
     <input type="text" class="form-control" ng-model="form.zipcode" name="zipcode" required>
   </div>
-    <button type="submit" class="btn btn-block btn-primary" ng-disabled="addressForm.$invalid && !(user.firstName && user.lastName && user.street && user.city && user.state && user.zipcode)">Continue</button>
+    <button type="submit" class="btn btn-block btn-primary" ng-disabled="addressForm.$invalid && !(form.firstName && form.lastName && form.street && form.city && form.state && form.zipcode)">Continue</button>
 </form>

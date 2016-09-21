@@ -24,7 +24,7 @@ app.controller('CheckoutShippingCtrl', function ($scope, $log, $state, CartFacto
         $scope.form.city = $state.params.addrInfo.city || undefined;
         $scope.form.state = $state.params.addrInfo.state || undefined;
         $scope.form.zipcode = $state.params.addrInfo.zipcode || undefined;
-    } else {
+    } else if (user) {
         $scope.form.firstName = user.firstName || undefined;
         $scope.form.lastName = user.lastName || undefined;
         $scope.form.street = user.street || undefined;
