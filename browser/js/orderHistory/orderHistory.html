@@ -14,7 +14,7 @@
       <th class="col-md-2">{{order.id}}</th>
       <td class="col-md-3">{{order.updatedAt | date: "MM/dd/yyyy"}}</td>
       <td class="col-md-2">{{order.status}}</td>
-      <td class="col-md-2">${{order.priceAtPurchase}}</td>
+      <td class="col-md-2">${{order.totalSellPrice}}</td>
       <td class="col-md-2"><button class="btn btn-primary" ng-click="getOrderDetail(order.id)">View</button><td>
     </tr>
   </tbody>
@@ -35,7 +35,7 @@
       <th scope="row">{{order.id}}</th>
       <td>{{order.name}}</td>
       <td>{{order.orders[0].power_order.quantity}}</td>
-      <td>${{order.orders[0].power_order.priceAtPurchase}}</td>
+      <td>${{order.orders[0].power_order.price}}</td>
   <button class="btn btn-secondary" ng-click="toggleShowOrderDetail()">Collapse Order Detail</button>
     </tr>
   </tbody>
