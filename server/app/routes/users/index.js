@@ -9,20 +9,7 @@ const Power = Model.Power;
 
 //get all users
 
-router.get('/', function (req, res, next){
-  User.findAll
-  .then(allUsers => res.send(allUsers))
-  .catch(next);
-})
 
-//get specific user
-router.get('/:userId', function (req, res, next) {
-  User.findOne({
-    where: {id: req.params.userId}
-  })
-  .then(foundUser => res.send(foundUser))
-  .catch(next);
-});
 
 //sign up: create new user
 
@@ -50,22 +37,22 @@ router.put('/', function (req, res, next) {
 
 //router.put
 router.get('/orders', function(req, res, next){
-  // console.log('in get orders');
-  // if (req.query.OrderId) {
-  //   console.log('iaminif')
-  //   Power.findAll({
-  //     include: [{
-  //       model: Order,
-  //       where: {
-  //       id: req.query.OrderId
-  //     }
-  //     }]
-  // })
-  //   .then(function(allOrderDetail) {
-  //     res.send(allOrderDetail);
-  //   })
-  //   .catch(next)
-  // } else {
+  console.log('in get orders');
+  if (req.query.OrderId) {
+    console.log('iaminif')
+    Power.findAll({
+      include: [{
+        model: Order,
+        where: {
+        id: req.query.OrderId
+      }
+      }]
+  })
+    .then(function(allOrderDetail) {
+      res.send(allOrderDetail);
+    })
+    .catch(next)
+  } else {
     console.log('i am in else');
     console.log(req.session.passport.user);
     Order.findAll({where: {
@@ -77,9 +64,24 @@ router.get('/orders', function(req, res, next){
       res.send(priorOrders)
     })
     .catch(next);
-  // }
+  }
 
+});
+
+router.get('/', function (req, res, next){
+  User.findAll
+  .then(allUsers => res.send(allUsers))
+  .catch(next);
 })
+
+//get specific user
+router.get('/:userId', function (req, res, next) {
+  User.findOne({
+    where: {id: req.params.userId}
+  })
+  .then(foundUser => res.send(foundUser))
+  .catch(next);
+});
 
 module.exports = router;
 
