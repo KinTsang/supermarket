@@ -34,12 +34,22 @@ var seedUsers = function () {
         {
             email: 'testing@fsa.com',
             password: 'password',
+<<<<<<< HEAD
+=======
             isAdmin: false
+>>>>>>> 47ddfeae725d4185e978271e5b17a31aeb81fd70
         },
         {
             email: 'obama@gmail.com',
             password: 'potus',
+<<<<<<< HEAD
+            street: '1600 Pennsylvania Ave NW',
+            city: 'Washington',
+            state: 'DC',
+            zipcode: 20500
+=======
             isAdmin: true
+>>>>>>> 47ddfeae725d4185e978271e5b17a31aeb81fd70
         }
     ];
 

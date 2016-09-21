@@ -3,7 +3,6 @@
     <div class="buffer local">
       <form name="signUpForm" ng-submit="signUpForm.$valid && submitSignup(form)" novalidate>
         <div class="form-group">
-
   <!-- ERROR MESSAGES -->
            <div ng-message="signUpForm.email.$error" ng-hide="signUpForm.email.$untouched ||signUpForm.email.$pristine ||signUpForm.email.$valid">
              <div ng-message="pattern" class="alert alert-warning">

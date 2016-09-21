@@ -26,7 +26,7 @@ app.controller('AdminCategoryCtrl', function ($scope, CategoryFactory, $log, $st
   })
 
   $scope.editCategory = function (categoryId, category){
-    CategoryFactory.editCategory(categoryId, category)
+    CategoryFactory.editName(categoryId, category)
     .then(() => $state.go('categoryadmin'));
   };
 
@@ -37,22 +37,18 @@ app.controller('AdminCategoryCtrl', function ($scope, CategoryFactory, $log, $st
 
   $scope.isActive = function (categoryId, status){
     CategoryFactory.editStatus(categoryId, status)
-    .then(() => $state.go('categoryadmin'));
+    .then(() => $state.reload());
   };
 
   $scope.addCategory = function (category) {
     CategoryFactory.createCategory(category)
-    .then(() => $state.go('categoryadmin'));
+    .then(() => $state.reload());
   };
 
-  // $scope.statuses = [
-  //   {value: 1, text: 'status1'},
-  //   {value: 2, text: 'status2'}
-  // ];
+  $scope.categoryForm = false;
 
-  // $scope.showStatus = function() {
-  //   var selected = $filter('filter')($scope.statuses, {value: $scope.user.status});
-  //   return ($scope.user.status && selected.length) ? selected[0].text : 'Not set';
-  // }
+  $scope.showForm = function () {
+    $scope.categoryForm = !$scope.categoryForm;
+  }
 
 });

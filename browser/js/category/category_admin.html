@@ -1,6 +1,6 @@
 <a class="btn btn-primary" role="button" ng-click="showForm()">Add Category</a>
   <ul class="list-group">
-    <li class="list-group-item" editable-text="category.name" onbeforesave="addCategory($data)" ng-show="categoryForm">
+    <li class="list-group-item" editable-text="category.name" onaftersave="addCategory($data)" ng-show="categoryForm">
     {{'Insert Category Here' }}
     </li>
   </ul>
@@ -8,17 +8,8 @@
   <ul class="list-group">
      <li class="list-group-item" ng-repeat="category in categories | filter: {active: true} | orderBy: ['name']" editable-text="category.name" onaftersave="editCategory(category.id, $data)">
       {{category.name}}
-      <button type="button" ng-click="isActive(category.id, false)" class="btn btn-info pull-right">Active</button>
-      <button ng-click="deleteCategory(category.id)" class="btn btn-danger pull-right">Delete</button> {{category.active}}
-    </li>
-<div ng-controller="RadiolistCtrl">
-  <a href="#" editable-radiolist="category.active">
-    true
-    false
-  </a>
-</div>
-
-  </a>
+      <button type="button" ng-click="isActive(category.id, false)" class="btn btn-info pull-right">Inactive</button>
+      <button ng-click="deleteCategory(category.id)" class="btn btn-danger pull-right">Delete</button>
   </ul>
 
 <h3 class="text-center"> Inactive Categories </h3>
