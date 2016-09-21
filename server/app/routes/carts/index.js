@@ -7,6 +7,32 @@ var Power = Models.Power;
 var PowerOrder = Models.PowerOrder;
 module.exports = router;
 
+router.get('/getTotal', function (req, res, next){
+    Order.findById(1)
+    .then(order => order.getPrice())
+    .then(price => res.json(price))
+    //.then(order => res.send(order))
+})
+
+// router.get('/getTotal', function (req, res, next){
+
+//     if (req.session.passport.user) {
+//         let userId = req.session.passport.user;
+//         Order.findOne({
+//             where: {
+//                 userId: userId,
+//                 status: 'open'
+//             }
+//         })
+//         .then(order => {
+//             order.total = order.getPrice();
+//             order.save();
+//             console.log(order.total);
+//             res.send(order);
+//         })
+//     }
+// })
+
 router.get('/', function(req, res) {
     console.log(req.session);
     let result = [];

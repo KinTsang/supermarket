@@ -6,6 +6,7 @@
         <div class="welcome welcome-container">
             <div>>
                 <a ng-show="!user" ui-sref="login">Login</a>
+                <a ng-show="!user" ui-sref="signup">| Signup |</a>
                 <span ng-show="user">Welcome, {{ user.email }}!</span>
                 <a ng-show="user" ng-click="toggleAccountOptions()"><span class="glyphicon glyphicon-cog"></span></a>
                 <a ui-sref="viewCart"><span class="glyphicon glyphicon-shopping-cart"></span></a>

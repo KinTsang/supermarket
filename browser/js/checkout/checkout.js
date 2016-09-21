@@ -31,6 +31,7 @@
       url: '/checkout/review',
       templateUrl: 'js/checkout/checkout.review.html',
       resolve: {
+        user: (AuthService) => AuthService.getLoggedInUser(false),
         items: (CartFactory) => CartFactory.fetchAll()
       },
       controller: 'CheckoutCtrl'
@@ -46,7 +47,7 @@ app.controller('CheckoutCtrl', function ($scope, user, UserFactory, $log, $state
     if (user) {
       UserFactory.editUser(form)
       .then((updatedUser) => {
-        $scope.user = updatedUser;
+        //$scope.user = updatedUser;
         $state.go('review');
       })
       .catch($log.error);
@@ -55,6 +56,11 @@ app.controller('CheckoutCtrl', function ($scope, user, UserFactory, $log, $state
       $state.go('review');
     }
   }
+
+  CartFactory.getTotal()
+  .then(total => {
+    $scope.total = total;
+  })
 
   $scope.completeCheckout = function () {
     CartFactory.completeCheckout()

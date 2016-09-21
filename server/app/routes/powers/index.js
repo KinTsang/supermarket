@@ -19,7 +19,8 @@ router.get('/', function(req, res, next) {
         searchParams.include.where = { id: req.query.categoryId };
     }
     Power.findAll(searchParams)
-        .then(allPower => res.status(200).send(allPower))
+        .then(allPower => {
+            res.status(200).send(allPower)})
         .catch(next);
 })
 

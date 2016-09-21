@@ -6,16 +6,20 @@ var db = require('../_db');
 module.exports = db.define('power', {
     active: {
         type: Sequelize.BOOLEAN,
-        defaultValue: true
+        defaultValue: true,
+        allowNull: false
     },
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
     },
     price: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false
     },
     quantity: {
         type: Sequelize.INTEGER

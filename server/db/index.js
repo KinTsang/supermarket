@@ -47,6 +47,7 @@ User.hasMany(Review);
 
 module.exports = {
     db: db,
+    //not necessary because of db -> var Power = db.model('power');
     Category: Category,
     Order: Order,
     Power: Power,
