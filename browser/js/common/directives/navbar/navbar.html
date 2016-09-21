@@ -9,7 +9,7 @@
                 <a ng-show="!user" ui-sref="signup">| Signup |</a>
                 <span ng-show="user">Welcome, {{ user.email }}!</span>
                 <a ng-show="user" ng-click="toggleAccountOptions()"><span class="glyphicon glyphicon-cog"></span></a>
-                <a ui-sref="viewCart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                <a ui-sref="checkoutcart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
                 <a ng-click="toggleSearching()"><span class="glyphicon glyphicon-search"></span></a>
                 <a ng-click="toggleAdminOptions()" ng-show="user.isAdmin"><span class="glyphicon glyphicon-lock"></span></a>
             </div>

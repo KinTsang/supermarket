@@ -34,6 +34,12 @@ var seedUsers = function () {
         {
             email: 'testing@fsa.com',
             password: 'password',
+            firstName: 'Test First Name',
+            lastName: 'Test Last Name',
+            street: '1111 Test St.',
+            city: 'Test City',
+            state: 'TS',
+            zipcode: 77777,
             isAdmin: false
         },
         {
@@ -148,19 +154,19 @@ var seedPowers = function () {
 var seedCategories = function () {
     var categories = [
         {
-            name: 'Physical'
+            name: 'Corpus'
         },
         {
-            name: 'Mental'
+            name: 'Animus'
         },
         {
-            name: 'Physics/Reality Manipulation'
+            name: 'Mundus'
         },
         {
-            name: 'Transportation/Travel'
+            name: 'Ambulus'
         },
         {
-            name: 'Divine'
+            name: 'Divinus'
         }
     ];
     var creatingCategories = categories.map(function(cateObj) {

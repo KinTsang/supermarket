@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-12" style="background-color: #EEE">
               <h4>
-              <ng-pluralize count="powerInfo.reviews.length" when="{'1': '{} customer has reviewed {{powerInfo.name}}:', 'other': ''{} customers have reviewed {{powerInfo.name}}:'"></ng-pluralize>
+              <ng-pluralize count="powerInfo.reviews.length" when="{'1': '{} customer has reviewed {{powerInfo.name}}:', 'other': '{} customers have reviewed {{powerInfo.name}}:'"></ng-pluralize>
               {{powerInfo.reviews.length}} customers have reviewed {{powerInfo.name}}:
               </h4>
               <div ng-repeat="review in powerInfo.reviews">
