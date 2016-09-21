@@ -3,7 +3,8 @@
 app.config(function ($stateProvider) {
   $stateProvider.state('signup', {
     url: '/signup',
-    templateUrl: 'js/signup/signup.html'
+    templateUrl: 'js/signup/signup.html',
+    controller: 'SignupCtrl'
   });
 });
 
@@ -28,10 +29,10 @@ app.directive('compareTo', function (){
 
 app.controller('SignupCtrl', function($scope, AuthFactory, $state, $log, AuthService){
   $scope.submitSignup = function(form){
-    console.log(form);
     AuthFactory.createUser(form)
       .then(AuthService.login(form)
             .then(function () {
+              console.log('here');
               $state.go('home');
             }))
       .catch($log.error);
