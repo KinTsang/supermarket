@@ -68,12 +68,6 @@ router.get('/orders', function(req, res, next){
 
 });
 
-router.get('/', function (req, res, next){
-  User.findAll
-  .then(allUsers => res.send(allUsers))
-  .catch(next);
-})
-
 //get specific user
 router.get('/:userId', function (req, res, next) {
   User.findOne({
@@ -82,6 +76,13 @@ router.get('/:userId', function (req, res, next) {
   .then(foundUser => res.send(foundUser))
   .catch(next);
 });
+
+router.get('/', function (req, res, next){
+  User.findAll
+  .then(allUsers => res.send(allUsers))
+  .catch(next);
+})
+
 
 module.exports = router;
 
