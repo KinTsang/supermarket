@@ -298,6 +298,8 @@ router.delete('/reset', function(req, res){
 
 
 router.put('/checkout', function (req, res, next) {
+    let addrInfo = req.body.addrInfo;
+
     if (req.session.passport.user) {
         let userId = req.session.passport.user;
         Order.findOne({
@@ -306,14 +308,29 @@ router.put('/checkout', function (req, res, next) {
                 status: 'open'
             }
         })
-        .then(order => {
-            order.status = 'closed';
-            return order.save()
+        .then((order) => {
+            return [order, order.getTotalPrice()];
         })
-        .then(order => res.send(order))
+        .spread((order, totalPrice) => {
+            order.totalSellPrice = totalPrice;
+            order.status = 'closed';
+            for (let k in addrInfo) {
+                if (addrInfo.hasOwnProperty(k)) {
+                    order[k] = addrInfo[k];
+                }
+            }
+            return order.save();
+        })
+        .then((order) => res.send(order))
         .catch(next);
+    } else {
+        // TODO
+        res.send();
     }
+
 });
+
+
 // router.post('/checkout', function (req, res, next) {
 
 //     if (req.session.part)
