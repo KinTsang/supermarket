@@ -45,8 +45,8 @@ var seedUsers = function () {
         {
             email: 'obama@gmail.com',
             password: 'potus',
-            firstName: 'Obama',
-            lastName: 'Barack',
+            firstName: 'Barack',
+            lastName: 'Obama',
             street: '1600 Pennsylvania Ave NW',
             city: 'Washington',
             state: 'DC',

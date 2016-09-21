@@ -24,5 +24,10 @@ app.factory('CartFactory', function($http) {
         return $http.put('/api/carts/checkout')
             .then(formatData);
     }
+
+    CartFactory.getTotal = function () {
+        return $http.get('/api/carts/getTotal')
+            .then(formatData);
+    }
     return CartFactory;
 });

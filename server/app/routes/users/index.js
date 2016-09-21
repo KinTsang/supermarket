@@ -50,29 +50,34 @@ router.put('/', function (req, res, next) {
 
 //router.put
 router.get('/orders', function(req, res, next){
-  if (req.query.OrderId) {
-    Power.findAll({
-      include: [{
-        model: Order,
-        where: {
-        id: req.query.OrderId
-      }
-      }]
-  })
-    .then(function(allOrderDetail) {
-      res.send(allOrderDetail);
-    })
-    .catch(next)
-  } else {
+  // console.log('in get orders');
+  // if (req.query.OrderId) {
+  //   console.log('iaminif')
+  //   Power.findAll({
+  //     include: [{
+  //       model: Order,
+  //       where: {
+  //       id: req.query.OrderId
+  //     }
+  //     }]
+  // })
+  //   .then(function(allOrderDetail) {
+  //     res.send(allOrderDetail);
+  //   })
+  //   .catch(next)
+  // } else {
+    console.log('i am in else');
+    console.log(req.session.passport.user);
     Order.findAll({where: {
       userId: req.session.passport.user,
       status: 'closed'
     }})
     .then((priorOrders) => {
+      console.log('prior', priorOrders);
       res.send(priorOrders)
     })
     .catch(next);
-  }
+  // }
 
 })
 
