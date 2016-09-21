@@ -27,7 +27,7 @@ app.controller('AdminCategoryCtrl', function ($scope, CategoryFactory, $log, $st
 
   $scope.editCategory = function (categoryId, category){
     CategoryFactory.editName(categoryId, category)
-    .then(() => $state.go('categoryadmin'));
+    .then(() => $state.reload());
   };
 
   $scope.deleteCategory = function (id) {

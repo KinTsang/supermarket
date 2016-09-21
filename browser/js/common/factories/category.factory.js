@@ -28,9 +28,9 @@ app.factory('CategoryFactory', function($http) {
             .then(formatData);
     }
 
-    // CategoryFactory.delete = function(id) {
-    //     return $http.delete('/api/categories/' + id)
-    // }
+    CategoryFactory.deleteCategory = function(id) {
+        return $http.delete('/api/categories/' + id)
+    }
 
     return CategoryFactory;
 })
