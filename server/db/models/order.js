@@ -6,9 +6,6 @@ var db = require('../_db');
 module.exports = db.define('order', {
     priceTotalAtPurchase: {
         type: Sequelize.FLOAT,
-        get: function () {
-
-        }
     },
     status: {
         type: Sequelize.ENUM,

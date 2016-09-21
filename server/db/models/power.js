@@ -7,19 +7,19 @@ module.exports = db.define('power', {
     active: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
-        allowNull: false
+        //allowNull: false
     },
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        //allowNull: false
     },
     description: {
         type: Sequelize.TEXT,
-        allowNull: false
+        //allowNull: false
     },
     price: {
         type: Sequelize.FLOAT,
-        allowNull: false
+        //allowNull: false
     },
     quantity: {
         type: Sequelize.INTEGER
